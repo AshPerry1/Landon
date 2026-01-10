@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View GW Properties & Development LLC portfolio of completed construction projects including new builds, renovations, and commercial work.">
+  <title>Portfolio | GW Properties & Development LLC</title>
+  
+  <link rel="canonical" href="https://yourusername.github.io/landon/portfolio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourusername.github.io/landon/portfolio.html">
+  <meta property="og:title" content="Portfolio | GW Properties & Development LLC">
+  <meta property="og:description" content="View our completed construction projects including new builds, renovations, and commercial work.">
+  <meta property="og:image" content="https://yourusername.github.io/landon/assets/img/hero-placeholder.jpg">
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "GW Properties & Development LLC",
+    "telephone": "+1-205-834-5845"
+  }
+  </script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8C0BWCXBF0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8C0BWCXBF0');
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-brand">
+          <a href="index.html">
+            <img src="assets/img/logo.jpg" alt="GW Properties & Development LLC" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display:none; color: var(--gold-400); font-weight: 600;">GW Properties & Development LLC</span>
+          </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+          <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Portfolio</h1>
+          <p class="section-description">A showcase of our completed projects and craftsmanship</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="portfolio-filter">
+          <button class="filter-btn active" data-filter="All">All</button>
+          <button class="filter-btn" data-filter="New Builds">New Builds</button>
+          <button class="filter-btn" data-filter="Renovations">Renovations</button>
+          <button class="filter-btn" data-filter="Outdoor">Outdoor</button>
+          <button class="filter-btn" data-filter="Commercial">Commercial</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Projects loaded via portfolio.js -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Results You Can See</h2>
+          <p>Every project is a testament to our commitment to quality, craftsmanship, and client satisfaction. Ready to start your project?</p>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/img/logo.jpg" alt="GW Properties & Development LLC" style="height: 34px; margin-bottom: 1rem;" onerror="this.style.display='none';">
+          <p>ESTD 2025</p>
+        </div>
+        <div class="footer-info">
+          <h3>GW Properties & Development LLC</h3>
+          <p>ESTD 2025</p>
+          <p><a href="tel:+12058345845" class="footer-link">(205) 834-5845</a></p>
+          <p><a href="mailto:info@gwproperties.com" class="footer-link">info@gwproperties.com</a></p>
+        </div>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About</a>
+          <a href="services.html" class="footer-link">Services</a>
+          <a href="portfolio.html" class="footer-link">Portfolio</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> GW Properties & Development LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <!-- Content loaded via portfolio.js -->
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/portfolio.js"></script>
+</body>
+</html>

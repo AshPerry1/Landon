@@ -1,0 +1,86 @@
+[
+  {
+    "id": "p1",
+    "title": "Modern Kitchen Renovation",
+    "location": "Birmingham, AL",
+    "category": "Renovations",
+    "image": "assets/img/project-1.jpg",
+    "featured": true,
+    "summary": "Full gut renovation with custom cabinetry and upgraded finishes.",
+    "details": {
+      "scope": ["Cabinetry", "Flooring", "Lighting", "Appliances"],
+      "timeline": "6 weeks",
+      "highlights": ["Improved layout", "Premium finishes", "On-time completion"]
+    }
+  },
+  {
+    "id": "p2",
+    "title": "Custom Home Build",
+    "location": "Mountain Brook, AL",
+    "category": "New Builds",
+    "image": "assets/img/project-2.jpg",
+    "featured": true,
+    "summary": "3,200 sq ft custom residence with modern craftsman design.",
+    "details": {
+      "scope": ["Foundation", "Framing", "Roofing", "Interior Finishes", "Landscaping"],
+      "timeline": "10 months",
+      "highlights": ["Energy efficient", "Custom design", "Premium materials"]
+    }
+  },
+  {
+    "id": "p3",
+    "title": "Outdoor Deck & Patio",
+    "location": "Vestavia Hills, AL",
+    "category": "Outdoor",
+    "image": "assets/img/project-3.jpg",
+    "featured": true,
+    "summary": "Composite deck with stone patio and pergola structure.",
+    "details": {
+      "scope": ["Deck Construction", "Patio Installation", "Pergola", "Railings"],
+      "timeline": "3 weeks",
+      "highlights": ["Low maintenance materials", "Extended living space", "Weather resistant"]
+    }
+  },
+  {
+    "id": "p4",
+    "title": "Master Bathroom Remodel",
+    "location": "Homewood, AL",
+    "category": "Renovations",
+    "image": "assets/img/project-1.jpg",
+    "featured": false,
+    "summary": "Luxury bathroom renovation with walk-in shower and freestanding tub.",
+    "details": {
+      "scope": ["Plumbing", "Tile Work", "Vanity", "Lighting", "Fixtures"],
+      "timeline": "4 weeks",
+      "highlights": ["Spa-like design", "Premium fixtures", "Increased home value"]
+    }
+  },
+  {
+    "id": "p5",
+    "title": "Office Building Renovation",
+    "location": "Birmingham, AL",
+    "category": "Commercial",
+    "image": "assets/img/project-2.jpg",
+    "featured": false,
+    "summary": "Commercial space renovation with modern finishes and improved layout.",
+    "details": {
+      "scope": ["Demolition", "New Walls", "Flooring", "Lighting", "Paint"],
+      "timeline": "8 weeks",
+      "highlights": ["Minimal disruption", "Modern aesthetic", "On budget"]
+    }
+  },
+  {
+    "id": "p6",
+    "title": "Home Addition",
+    "location": "Hoover, AL",
+    "category": "New Builds",
+    "image": "assets/img/project-3.jpg",
+    "featured": false,
+    "summary": "500 sq ft addition with new master suite and walk-in closet.",
+    "details": {
+      "scope": ["Foundation", "Framing", "Roofing", "Interior", "HVAC"],
+      "timeline": "12 weeks",
+      "highlights": ["Seamless integration", "Increased square footage", "Quality craftsmanship"]
+    }
+  }
+]
