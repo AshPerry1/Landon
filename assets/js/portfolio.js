@@ -14,14 +14,20 @@
   // ============================================
   async function loadProjects() {
     try {
-      const response = await fetch('data/projects.json');
+      // Determine base path for GitHub Pages
+      const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+      const jsonPath = basePath ? `${basePath}/data/projects.json` : 'data/projects.json';
+      
+      const response = await fetch(jsonPath);
       if (!response.ok) {
-        throw new Error('Failed to load projects data');
+        throw new Error(`Failed to load projects data: ${response.status}`);
       }
       projectsData = await response.json();
+      console.log('Projects loaded successfully:', projectsData.length);
       return projectsData;
     } catch (error) {
       console.error('Error loading projects:', error);
+      // Return empty array so site still works
       return [];
     }
   }
@@ -31,26 +37,43 @@
   // ============================================
   function renderFeaturedProjects(containerId) {
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) {
+      console.log('Featured projects container not found');
+      return;
+    }
+
+    if (!projectsData || projectsData.length === 0) {
+      container.innerHTML = '<p style="text-align: center; color: var(--text-200);">Projects loading...</p>';
+      return;
+    }
 
     const featuredProjects = projectsData.filter(p => p.featured).slice(0, 3);
     
     if (featuredProjects.length === 0) {
-      container.innerHTML = '<p>No featured projects available.</p>';
+      container.innerHTML = '<p style="text-align: center; color: var(--text-200);">No featured projects available at this time.</p>';
       return;
     }
 
-    container.innerHTML = featuredProjects.map(project => `
-      <div class="portfolio-card" data-project-id="${project.id}">
-        <img src="${project.image}" alt="${project.title}" class="portfolio-card-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%230c1403\' width=\'400\' height=\'300\'/%3E%3Ctext fill=\'%23c8bb96\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\' font-family=\'Arial\' font-size=\'18\'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
-        <div class="portfolio-card-content">
-          <span class="portfolio-card-category">${project.category}</span>
-          <h3 class="portfolio-card-title">${project.title}</h3>
-          <p class="portfolio-card-location">${project.location}</p>
-          <p class="portfolio-card-summary">${project.summary}</p>
+    // Get base path for images
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+    const imageBase = basePath ? `${basePath}/` : '';
+
+    container.innerHTML = featuredProjects.map(project => {
+      const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
+      const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%231a2824' width='400' height='300'/%3E%3Ctext fill='%23e8d9b8' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='18'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E`;
+      
+      return `
+        <div class="portfolio-card" data-project-id="${project.id}">
+          <img src="${imagePath}" alt="${project.title}" class="portfolio-card-image" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-category">${project.category}</span>
+            <h3 class="portfolio-card-title">${project.title}</h3>
+            <p class="portfolio-card-location">${project.location}</p>
+            <p class="portfolio-card-summary">${project.summary}</p>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     // Add click handlers for featured projects
     container.querySelectorAll('.portfolio-card').forEach(card => {
@@ -88,17 +111,26 @@
       return;
     }
 
-    container.innerHTML = filteredProjects.map(project => `
-      <div class="portfolio-card" data-project-id="${project.id}">
-        <img src="${project.image}" alt="${project.title}" class="portfolio-card-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%230c1403\' width=\'400\' height=\'300\'/%3E%3Ctext fill=\'%23c8bb96\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\' font-family=\'Arial\' font-size=\'18\'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
-        <div class="portfolio-card-content">
-          <span class="portfolio-card-category">${project.category}</span>
-          <h3 class="portfolio-card-title">${project.title}</h3>
-          <p class="portfolio-card-location">${project.location}</p>
-          <p class="portfolio-card-summary">${project.summary}</p>
+    // Get base path for images
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+    const imageBase = basePath ? `${basePath}/` : '';
+
+    container.innerHTML = filteredProjects.map(project => {
+      const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
+      const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%231a2824' width='400' height='300'/%3E%3Ctext fill='%23e8d9b8' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='18'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E`;
+      
+      return `
+        <div class="portfolio-card" data-project-id="${project.id}">
+          <img src="${imagePath}" alt="${project.title}" class="portfolio-card-image" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-category">${project.category}</span>
+            <h3 class="portfolio-card-title">${project.title}</h3>
+            <p class="portfolio-card-location">${project.location}</p>
+            <p class="portfolio-card-summary">${project.summary}</p>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     // Add click handlers
     container.querySelectorAll('.portfolio-card').forEach(card => {
@@ -150,9 +182,15 @@
 
     const modalContent = modal.querySelector('.modal-content');
     
+    // Get base path for images
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+    const imageBase = basePath ? `${basePath}/` : '';
+    const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
+    const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%231a2824' width='800' height='600'/%3E%3Ctext fill='%23e8d9b8' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='24'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E`;
+    
     modalContent.innerHTML = `
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <img src="${project.image}" alt="${project.title}" class="modal-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'600\'%3E%3Crect fill=\'%230c1403\' width=\'800\' height=\'600\'/%3E%3Ctext fill=\'%23c8bb96\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\' font-family=\'Arial\' font-size=\'24\'%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
+      <img src="${imagePath}" alt="${project.title}" class="modal-image" onerror="this.onerror=null; this.src='${fallbackSvg}';">
       <h2>${project.title}</h2>
       <p style="color: var(--text-200); margin-bottom: 1rem;">${project.location}</p>
       <p style="color: var(--text-200); margin-bottom: 2rem;">${project.summary}</p>
