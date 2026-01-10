@@ -4,7 +4,7 @@
     "title": "Modern Kitchen Renovation",
     "location": "Birmingham, AL",
     "category": "Renovations",
-    "image": "assets/img/project-1.jpg",
+    "image": "assets/img/home.png",
     "featured": true,
     "summary": "Full gut renovation with custom cabinetry and upgraded finishes.",
     "details": {
@@ -18,7 +18,7 @@
     "title": "Custom Home Build",
     "location": "Mountain Brook, AL",
     "category": "New Builds",
-    "image": "assets/img/project-2.jpg",
+    "image": "assets/img/home.png",
     "featured": true,
     "summary": "3,200 sq ft custom residence with modern craftsman design.",
     "details": {
@@ -32,7 +32,7 @@
     "title": "Outdoor Deck & Patio",
     "location": "Vestavia Hills, AL",
     "category": "Outdoor",
-    "image": "assets/img/project-3.jpg",
+    "image": "assets/img/home.png",
     "featured": true,
     "summary": "Composite deck with stone patio and pergola structure.",
     "details": {
@@ -46,7 +46,7 @@
     "title": "Master Bathroom Remodel",
     "location": "Homewood, AL",
     "category": "Renovations",
-    "image": "assets/img/project-1.jpg",
+    "image": "assets/img/home.png",
     "featured": false,
     "summary": "Luxury bathroom renovation with walk-in shower and freestanding tub.",
     "details": {
@@ -60,7 +60,7 @@
     "title": "Office Building Renovation",
     "location": "Birmingham, AL",
     "category": "Commercial",
-    "image": "assets/img/project-2.jpg",
+    "image": "assets/img/home.png",
     "featured": false,
     "summary": "Commercial space renovation with modern finishes and improved layout.",
     "details": {
@@ -74,7 +74,7 @@
     "title": "Home Addition",
     "location": "Hoover, AL",
     "category": "New Builds",
-    "image": "assets/img/project-3.jpg",
+    "image": "assets/img/home.png",
     "featured": false,
     "summary": "500 sq ft addition with new master suite and walk-in closet.",
     "details": {

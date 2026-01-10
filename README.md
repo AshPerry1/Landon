@@ -38,8 +38,8 @@ Landon/
 │   │   └── portfolio.js   # Portfolio functionality
 │   └── img/                # Image assets
 │       ├── logo.jpg         # Company logo (add your logo here)
-│       ├── hero-placeholder.jpg
-│       └── project-*.jpg   # Portfolio images
+│       ├── home.png         # Hero and portfolio images
+│       └── project-*.jpg   # Portfolio images (optional - uses home.png by default)
 └── data/
     └── projects.json       # Portfolio project data
 ```
