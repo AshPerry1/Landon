@@ -633,8 +633,8 @@ p {
 /* Portfolio Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
 }
 
 .portfolio-filter {
@@ -650,14 +650,14 @@ p {
   background: var(--bg-white);
   border: 1px solid var(--line-gray);
   color: var(--text-dark);
-  border-radius: var(--radius-pill);
+  border-radius: 8px;
   cursor: pointer;
   transition: var(--transition);
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
   box-shadow: var(--shadow-subtle);
 }
 
@@ -672,7 +672,7 @@ p {
   color: var(--bg-900);
   border-color: var(--gold-600);
   box-shadow: var(--shadow-medium);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .filter-btn.active:hover {
@@ -696,7 +696,7 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: var(--gold-gradient);
   transform: scaleX(0);
   transform-origin: left;
@@ -709,14 +709,14 @@ p {
 }
 
 .portfolio-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--gold-600);
   box-shadow: var(--shadow-medium);
 }
 
 .portfolio-card-image {
   width: 100%;
-  height: 240px;
+  height: 280px;
   object-fit: cover;
   display: block;
   transition: var(--transition);
@@ -725,11 +725,11 @@ p {
 }
 
 .portfolio-card:hover .portfolio-card-image {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .portfolio-card-content {
-  padding: 24px;
+  padding: 2rem;
   position: relative;
   z-index: 2;
   background: var(--bg-white);
@@ -737,16 +737,17 @@ p {
 
 .portfolio-card-category {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 8px 16px;
   background: var(--gold-300);
   color: var(--bg-900);
-  border-radius: var(--radius-pill);
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 1rem;
   border: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
 }
 
 .portfolio-card-title {
@@ -988,13 +989,13 @@ p {
 .process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin: 4rem 0;
+  gap: 2.5rem;
+  margin: 5rem 0;
 }
 
 .process-step {
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem;
   transition: var(--transition);
   border-radius: var(--radius-card);
   background: var(--bg-white);
@@ -1004,7 +1005,7 @@ p {
 }
 
 .process-step:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--gold-600);
   box-shadow: var(--shadow-medium);
 }
@@ -1126,15 +1127,13 @@ p {
   padding: 16px 20px;
   background: var(--bg-white);
   border: 1px solid var(--line-gray);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--text-dark);
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 400;
   transition: var(--transition);
-  backdrop-filter: blur(15px) saturate(130%);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(240, 230, 210, 0.1), inset 0 1px 2px rgba(240, 230, 210, 0.05);
-  position: relative;
+  box-shadow: var(--shadow-subtle);
 }
 
 .form-input::placeholder,
@@ -1148,7 +1147,7 @@ p {
 .form-textarea:focus {
   outline: none;
   border-color: var(--gold-600);
-  box-shadow: 0 0 0 3px rgba(212, 192, 153, 0.2);
+  box-shadow: 0 0 0 3px rgba(211, 187, 123, 0.15);
 }
 
 .form-input:hover,
