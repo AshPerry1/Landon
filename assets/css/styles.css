@@ -1183,13 +1183,12 @@ p {
 .form-submit-message {
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
-  background: var(--card-luxury);
-  border: 2px solid var(--gold-400);
+  background: var(--bg-white);
+  border: 2px solid var(--gold-600);
   border-radius: 10px;
-  color: var(--gold-300);
+  color: var(--text-dark);
   display: none;
-  backdrop-filter: blur(15px) saturate(150%);
-  box-shadow: var(--shadow-subtle), 0 0 25px rgba(240, 230, 210, 0.3), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  box-shadow: var(--shadow-medium);
   font-weight: 500;
   text-align: center;
   animation: fadeIn 0.3s ease-out;
@@ -1430,19 +1429,17 @@ p {
   transition: var(--transition);
   padding: 6px;
   border-radius: 50%;
-  background: var(--card-luxury);
-  border: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(240, 230, 210, 0.1);
+  background: transparent;
+  border: 1px solid var(--line-gray);
+  box-shadow: var(--shadow-subtle);
 }
 
 .social-icon:hover {
-  color: var(--gold-300);
+  color: var(--gold-600);
   background: var(--gold-gradient);
-  border-color: var(--gold-400);
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: var(--shadow-medium), var(--shadow-gold), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  text-shadow: 0 0 10px rgba(240, 230, 210, 0.5);
+  border-color: var(--gold-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 .footer-bottom {
