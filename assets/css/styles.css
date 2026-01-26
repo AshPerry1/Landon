@@ -1380,7 +1380,13 @@ p {
   letter-spacing: 0.02em;
   text-decoration: none !important;
   border-bottom: none !important;
+  border: none !important;
+  outline: none !important;
   cursor: default;
+  text-underline-offset: 0 !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: transparent !important;
 }
 
 .footer-info p {
