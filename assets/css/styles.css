@@ -104,15 +104,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.01em;
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
   position: relative;
+  z-index: 1;
 }
 
 h1 {
   font-size: 56px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
   margin-bottom: 1.5rem;
 }
 
@@ -125,12 +126,13 @@ h1::after {
   height: 2px;
   background: var(--gold-gradient);
   border-radius: 2px;
+  z-index: 0;
 }
 
 h2 {
   font-size: 36px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
   letter-spacing: 0.01em;
   margin-bottom: 1rem;
 }
@@ -138,7 +140,7 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
   letter-spacing: 0.01em;
   text-decoration: none;
   border-bottom: none;
@@ -280,7 +282,7 @@ p {
 .hero.white h1,
 .hero.white h2,
 .hero.white h3 {
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
 }
 
 .hero.white p {
@@ -298,19 +300,21 @@ p {
 
 .hero-text h1 {
   margin-bottom: 2rem;
-  color: var(--text-100);
+  color: var(--text-100) !important;
   text-shadow: none;
   filter: none;
+  z-index: 2;
 }
 
 .hero.white .hero-text h1 {
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
 }
 
 .hero-text h1::after {
   left: 0;
   width: 60px;
   background: var(--gold-gradient);
+  z-index: 1;
 }
 
 .hero-text p {
@@ -523,6 +527,8 @@ p {
   text-align: center;
   display: inline-block;
   width: 100%;
+  color: var(--text-dark) !important;
+  z-index: 1;
 }
 
 .section-title::after {
@@ -535,6 +541,7 @@ p {
   height: 2px;
   background: var(--gold-gradient);
   border-radius: 2px;
+  z-index: 0;
 }
 
 .section-description {
