@@ -863,7 +863,7 @@ p {
 }
 
 .modal-image:hover {
-  box-shadow: var(--shadow-luxury), var(--shadow-gold), inset 0 0 80px rgba(240, 230, 210, 0.15);
+  box-shadow: var(--shadow-medium);
   filter: brightness(1.05) contrast(1.02);
 }
 
