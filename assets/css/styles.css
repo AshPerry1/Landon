@@ -42,12 +42,12 @@
   --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
   
-  /* Spacing */
-  --section-padding-desktop: 88px;
-  --section-padding-mobile: 64px;
-  --container-max-width: 1120px;
-  --side-padding-desktop: 24px;
-  --side-padding-mobile: 16px;
+  /* Spacing - More generous white space like Pike Properties */
+  --section-padding-desktop: 120px;
+  --section-padding-mobile: 80px;
+  --container-max-width: 1200px;
+  --side-padding-desktop: 32px;
+  --side-padding-mobile: 20px;
   
   /* Border Radius */
   --radius-card: 18px;
@@ -84,7 +84,7 @@ html {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-dark);
   background: var(--bg-white);
   position: relative;
@@ -98,53 +98,58 @@ main {
   z-index: 1;
 }
 
-/* Typography - Clean and professional */
+/* Typography - Clean and professional like Pike Properties */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cinzel', serif;
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
   color: var(--text-dark);
   position: relative;
 }
 
 h1 {
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--text-dark);
+  margin-bottom: 1.5rem;
 }
 
 h1::after {
   content: '';
   position: absolute;
-  bottom: -12px;
+  bottom: -16px;
   left: 0;
-  width: 80px;
-  height: 3px;
+  width: 60px;
+  height: 2px;
   background: var(--gold-gradient);
   border-radius: 2px;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
   color: var(--text-dark);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--text-dark);
   letter-spacing: 0.01em;
   text-decoration: none;
   border-bottom: none;
+  margin-bottom: 0.75rem;
 }
 
 p {
-  max-width: 68ch;
+  max-width: 70ch;
   color: var(--text-gray);
+  font-size: 17px;
+  line-height: 1.8;
 }
 
 /* Container */
@@ -154,26 +159,26 @@ p {
   padding: 0 var(--side-padding-desktop);
 }
 
-/* Header / Navigation - Clean and professional */
+/* Header / Navigation - Clean and minimal like Pike Properties */
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--bg-white);
   border-bottom: 1px solid var(--line-gray);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
 }
 
 .header.scrolled {
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
 }
 
 .nav-brand {
@@ -182,24 +187,24 @@ p {
 }
 
 .nav-brand img {
-  height: 44px;
+  height: 48px;
   width: auto;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: center;
 }
 
 .nav-link {
   color: var(--text-dark);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
   transition: var(--transition);
   position: relative;
   padding: 0.5rem 0;
@@ -209,18 +214,16 @@ p {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: var(--gold-gradient);
   transition: var(--transition);
-  border-radius: 2px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--bg-900);
+  color: var(--text-dark);
 }
 
 .nav-link:hover::after,
@@ -258,10 +261,10 @@ p {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Hero Sections - Clean and professional */
+/* Hero Sections - Clean and spacious like Pike Properties */
 .hero {
   padding: var(--section-padding-desktop) 0;
-  min-height: 75vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -287,7 +290,7 @@ p {
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -306,15 +309,15 @@ p {
 
 .hero-text h1::after {
   left: 0;
-  width: 80px;
+  width: 60px;
   background: var(--gold-gradient);
 }
 
 .hero-text p {
-  font-size: 18px;
+  font-size: 19px;
   margin-bottom: 2.5rem;
   color: var(--text-200);
-  line-height: 1.8;
+  line-height: 1.9;
   font-weight: 400;
 }
 
@@ -380,11 +383,11 @@ p {
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 14px 28px;
+  padding: 16px 32px;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  border-radius: var(--radius-pill);
+  border-radius: 8px;
   transition: var(--transition);
   cursor: pointer;
   border: none;
@@ -397,11 +400,13 @@ p {
   color: var(--bg-900);
   box-shadow: var(--shadow-subtle);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-transform: none;
+  letter-spacing: 0.02em;
   border: none;
   transition: var(--transition);
   white-space: nowrap;
+  padding: 16px 32px;
+  font-size: 16px;
 }
 
 .btn-primary:hover {
@@ -414,11 +419,13 @@ p {
   color: var(--text-100);
   border: 2px solid var(--gold-400);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-transform: none;
+  letter-spacing: 0.02em;
   box-shadow: var(--shadow-subtle);
   transition: var(--transition);
   white-space: nowrap;
+  padding: 16px 32px;
+  font-size: 16px;
 }
 
 .btn-secondary:hover {
@@ -429,12 +436,12 @@ p {
   box-shadow: var(--shadow-medium);
 }
 
-/* Cards - Clean and professional */
+/* Cards - Clean and minimal like Pike Properties */
 .card {
   background: var(--bg-white);
   border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
-  padding: 28px;
+  padding: 2.5rem;
   transition: var(--transition);
   box-shadow: var(--shadow-card);
   position: relative;
@@ -446,7 +453,7 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: var(--gold-gradient);
   transform: scaleX(0);
   transform-origin: left;
@@ -458,7 +465,7 @@ p {
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--gold-600);
   box-shadow: var(--shadow-medium);
 }
@@ -472,7 +479,7 @@ p {
 }
 
 .card:hover .card-icon {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .card-title {
@@ -494,10 +501,10 @@ p {
   text-decoration: underline;
 }
 
-/* Section Headers */
+/* Section Headers - Clean and spacious */
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   position: relative;
   width: 100%;
 }
@@ -524,17 +531,17 @@ p {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
+  width: 60px;
+  height: 2px;
   background: var(--gold-gradient);
   border-radius: 2px;
 }
 
 .section-description {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   color: var(--text-gray);
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.8;
   text-align: center;
 }
@@ -560,15 +567,15 @@ p {
 /* Services Cards */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
 }
 
 .service-card {
   background: var(--bg-white);
   border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
-  padding: 28px;
+  padding: 2.5rem;
   transition: var(--transition);
   box-shadow: var(--shadow-card);
   position: relative;
@@ -580,7 +587,7 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: var(--gold-gradient);
   transform: scaleX(0);
   transform-origin: left;
@@ -592,7 +599,7 @@ p {
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--gold-600);
   box-shadow: var(--shadow-medium);
 }
@@ -1282,14 +1289,14 @@ p {
   max-height: 500px;
 }
 
-/* CTA Bands */
+/* CTA Bands - Clean and centered */
 .cta-band {
   background: var(--bg-900);
   border: 1px solid var(--gold-600);
   border-radius: var(--radius-card);
-  padding: 4rem 2.5rem;
+  padding: 5rem 3rem;
   text-align: center;
-  margin: 4rem 0;
+  margin: 5rem 0;
   box-shadow: var(--shadow-medium);
   position: relative;
   color: var(--text-100);
@@ -1300,19 +1307,22 @@ p {
 }
 
 .cta-band h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--text-100);
   text-align: center;
   width: 100%;
+  font-size: 36px;
 }
 
 .cta-band p {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: var(--text-200);
   text-align: center;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
 .cta-band .btn {
