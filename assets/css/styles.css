@@ -429,17 +429,15 @@ p {
   box-shadow: var(--shadow-medium);
 }
 
-/* Cards - Premium luxury cards */
+/* Cards - Clean and professional */
 .card {
-  background: var(--card-luxury);
-  border: 1px solid var(--line);
+  background: var(--bg-white);
+  border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
   padding: 28px;
-  backdrop-filter: blur(20px) saturate(150%) brightness(1.05);
   transition: var(--transition);
-  box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(240, 230, 210, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   position: relative;
-  overflow: hidden;
 }
 
 .card::before {
@@ -450,54 +448,31 @@ p {
   right: 0;
   height: 3px;
   background: var(--gold-gradient);
-  background-size: 200% 100%;
   transform: scaleX(0);
   transform-origin: left;
   transition: var(--transition);
-  box-shadow: 0 0 20px rgba(240, 230, 210, 0.6);
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(240, 230, 210, 0.08) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
 }
 
 .card:hover::before {
   transform: scaleX(1);
-  background-position: 100% 0;
-  animation: luxuryGlow 2s ease-in-out infinite;
 }
-
-.card:hover::after {
-  opacity: 1;
-}
-
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: var(--gold-400);
-  box-shadow: var(--shadow-luxury), var(--shadow-glow), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  transform: translateY(-4px);
+  border-color: var(--gold-600);
+  box-shadow: var(--shadow-medium);
 }
 
 .card-icon {
-  width: 56px;
-  height: 56px;
-  margin-bottom: 1.75rem;
-  color: var(--gold-300);
-  filter: drop-shadow(0 2px 8px rgba(240, 230, 210, 0.5)) drop-shadow(0 0 20px rgba(212, 192, 153, 0.3));
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+  color: var(--gold-600);
   transition: var(--transition);
 }
 
 .card:hover .card-icon {
-  transform: scale(1.1);
-  filter: drop-shadow(0 4px 12px rgba(240, 230, 210, 0.7)) drop-shadow(0 0 30px rgba(212, 192, 153, 0.5));
+  transform: scale(1.05);
 }
 
 .card-title {
