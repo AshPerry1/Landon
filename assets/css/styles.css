@@ -6,36 +6,36 @@
 /* CSS Variables - Brand Colors */
 :root {
   /* Background Colors */
-  --bg-900: #1a2824;
-  --bg-800: #253a35;
-  --bg-700: #2f4a44;
+  --bg-900: #1A3328;
+  --bg-800: #2a4a3d;
+  --bg-700: #3a5a4d;
   --bg-white: #ffffff;
   --bg-light: #f8f9fa;
   
   /* Gold Accents */
-  --gold-400: #f0e6d2;
-  --gold-500: #e8d9b8;
-  --gold-600: #d4c099;
-  --gold-300: #faf8f3;
-  --gold-200: #fffef9;
-  --gold-accent: #f5e6c8;
+  --gold-400: #D3BB7B;
+  --gold-500: #D3BB7B;
+  --gold-600: #c0a968;
+  --gold-300: #e8dbb8;
+  --gold-200: #f5f0e3;
+  --gold-accent: #D3BB7B;
   
   /* Text Colors */
   --text-100: #ffffff;
   --text-200: #f0ede5;
   --text-300: #e0ddd5;
-  --text-dark: #1a2824;
+  --text-dark: #1A3328;
   --text-gray: #6c757d;
   
   /* Borders & Lines */
-  --line: rgba(240, 230, 210, 0.3);
-  --line-light: rgba(240, 230, 210, 0.15);
-  --line-gold: rgba(212, 192, 153, 0.4);
+  --line: rgba(211, 187, 123, 0.3);
+  --line-light: rgba(211, 187, 123, 0.15);
+  --line-gold: rgba(211, 187, 123, 0.4);
   --line-gray: rgba(0, 0, 0, 0.1);
   
   /* Gradients - Simplified */
-  --bg-gradient: linear-gradient(180deg, #1a2824 0%, #253a35 100%);
-  --gold-gradient: linear-gradient(135deg, #d4c099 0%, #e8d9b8 100%);
+  --bg-gradient: linear-gradient(180deg, #1A3328 0%, #2a4a3d 100%);
+  --gold-gradient: linear-gradient(135deg, #c0a968 0%, #D3BB7B 100%);
   
   /* Shadows - Simplified and professional */
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.1);
