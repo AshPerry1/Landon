@@ -262,11 +262,6 @@
   async function init() {
     await loadProjects();
     
-    // Render featured projects if on home page
-    if (document.getElementById('featuredProjects')) {
-      renderFeaturedProjects('featuredProjects');
-    }
-    
     // Render portfolio grid if on portfolio page
     if (document.getElementById('portfolioGrid')) {
       renderPortfolioGrid('All');
@@ -283,7 +278,6 @@
 
   // Export functions for global access if needed
   window.portfolioModule = {
-    renderFeaturedProjects,
     renderPortfolioGrid,
     openModal,
     closeModal
