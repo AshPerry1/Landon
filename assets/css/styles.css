@@ -1018,6 +1018,8 @@ p {
 .process-step-number {
   width: 60px;
   height: 60px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
   background: var(--gold-gradient);
   color: var(--bg-900);
@@ -1027,13 +1029,15 @@ p {
   font-weight: 700;
   margin: 0 auto 1.5rem;
   font-size: 24px;
+  line-height: 1;
   box-shadow: var(--shadow-subtle);
   border: none;
   position: relative;
+  flex-shrink: 0;
 }
 
 .process-step:hover .process-step-number {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .process-step-title {
