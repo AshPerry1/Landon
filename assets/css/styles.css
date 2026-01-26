@@ -524,12 +524,23 @@ p {
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
+  width: 100%;
+}
+
+.section-header h1,
+.section-header h2 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title {
   position: relative;
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
 }
 
 .section-title::after {
@@ -550,6 +561,7 @@ p {
   color: var(--text-gray);
   font-size: 18px;
   line-height: 1.8;
+  text-align: center;
 }
 
 /* Grid Layouts */
@@ -1195,13 +1207,12 @@ p {
 }
 
 .accordion-item {
-  background: var(--card-luxury);
-  border: 1px solid var(--line);
+  background: var(--bg-white);
+  border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
   margin-bottom: 1.25rem;
   overflow: hidden;
-  backdrop-filter: blur(20px) saturate(150%) brightness(1.05);
-  box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(240, 230, 210, 0.1);
+  box-shadow: var(--shadow-card);
   transition: var(--transition);
   position: relative;
 }
@@ -1212,24 +1223,21 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--gold-gradient);
-  background-size: 200% 100%;
   transform: scaleX(0);
   transform-origin: left;
   transition: var(--transition);
-  box-shadow: 0 0 15px rgba(240, 230, 210, 0.5);
 }
 
 .accordion-item:hover::before,
 .accordion-item.active::before {
   transform: scaleX(1);
-  background-position: 100% 0;
 }
 
 .accordion-item.active {
-  border-color: var(--gold-400);
-  box-shadow: var(--shadow-medium), var(--shadow-glow), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  border-color: var(--gold-600);
+  box-shadow: var(--shadow-medium);
 }
 
 .accordion-button {
@@ -1238,8 +1246,8 @@ p {
   background: none;
   border: none;
   text-align: left;
-  color: var(--text-100);
-  font-size: 19px;
+  color: var(--text-dark);
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -1253,19 +1261,17 @@ p {
 }
 
 .accordion-button:hover {
-  color: var(--gold-300);
-  text-shadow: 0 0 10px rgba(240, 230, 210, 0.4);
+  color: var(--bg-900);
 }
 
 .accordion-button[aria-expanded="true"] {
-  color: var(--gold-300);
-  text-shadow: 0 0 12px rgba(240, 230, 210, 0.5);
+  color: var(--bg-900);
 }
 
 .accordion-button::after {
   content: '+';
-  font-size: 28px;
-  color: var(--gold-400);
+  font-size: 24px;
+  color: var(--gold-600);
   transition: var(--transition);
   font-weight: 300;
   width: 32px;
@@ -1274,20 +1280,15 @@ p {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(240, 230, 210, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  flex-shrink: 0;
 }
 
 .accordion-button:hover::after {
-  background: rgba(240, 230, 210, 0.2);
-  box-shadow: 0 4px 12px rgba(240, 230, 210, 0.3), inset 0 1px 0 rgba(240, 230, 210, 0.3);
   transform: rotate(90deg);
 }
 
 .accordion-button[aria-expanded="true"]::after {
   content: '−';
-  background: rgba(240, 230, 210, 0.25);
-  box-shadow: 0 4px 15px rgba(240, 230, 210, 0.4), inset 0 1px 0 rgba(240, 230, 210, 0.4);
   transform: rotate(0deg);
 }
 
@@ -1299,7 +1300,7 @@ p {
 
 .accordion-content-inner {
   padding: 0 1.5rem 1.5rem;
-  color: var(--text-200);
+  color: var(--text-gray);
   line-height: 1.7;
 }
 
@@ -1318,26 +1319,30 @@ p {
   box-shadow: var(--shadow-medium);
   position: relative;
   color: var(--text-100);
-}
-
-@keyframes luxuryShimmerSlide {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-@keyframes luxuryPulse {
-  0%, 100% { opacity: 0.4; transform: scale(1) translate(0, 0); }
-  50% { opacity: 0.8; transform: scale(1.15) translate(30px, -30px); }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta-band h2 {
   margin-bottom: 1rem;
   color: var(--text-100);
+  text-align: center;
+  width: 100%;
 }
 
 .cta-band p {
   margin-bottom: 2rem;
   color: var(--text-200);
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-band .btn {
+  margin: 0 auto;
 }
 
 /* Footer */
@@ -1459,15 +1464,13 @@ p {
 }
 
 .contact-card {
-  background: var(--card-luxury);
-  border: 1px solid var(--line);
+  background: var(--bg-white);
+  border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
   padding: 28px;
-  backdrop-filter: blur(20px) saturate(150%) brightness(1.05);
-  box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(240, 230, 210, 0.1);
+  box-shadow: var(--shadow-card);
   transition: var(--transition);
   position: relative;
-  overflow: hidden;
 }
 
 .contact-card::before {
@@ -1478,45 +1481,38 @@ p {
   right: 0;
   height: 3px;
   background: var(--gold-gradient);
-  background-size: 200% 100%;
   transform: scaleX(0);
   transform-origin: left;
   transition: var(--transition);
-  box-shadow: 0 0 20px rgba(240, 230, 210, 0.6);
 }
 
 .contact-card:hover::before {
   transform: scaleX(1);
-  background-position: 100% 0;
-  animation: luxuryGlow 2s ease-in-out infinite;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold-400);
-  box-shadow: var(--shadow-luxury), var(--shadow-glow), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  transform: translateY(-4px);
+  border-color: var(--gold-600);
+  box-shadow: var(--shadow-medium);
 }
 
 .contact-card h3 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: var(--gold-300);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(240, 230, 210, 0.2);
+  color: var(--text-dark);
 }
 
 .contact-card p,
 .contact-card a {
-  color: var(--text-200);
+  color: var(--text-gray);
   text-decoration: none;
   transition: var(--transition);
   font-weight: 400;
 }
 
 .contact-card a:hover {
-  color: var(--gold-300);
-  text-shadow: 0 0 10px rgba(240, 230, 210, 0.5);
-  transform: translateX(2px);
+  color: var(--gold-600);
 }
 
 /* Two Column Layout */
@@ -1603,19 +1599,33 @@ p {
     padding: var(--section-padding-mobile) 0;
   }
   
+  .hero {
+    min-height: 60vh;
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .cta-band {
+    padding: 3rem 1.5rem;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
   .nav-menu {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: rgba(12, 20, 3, 0.98);
+    background: var(--bg-900);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     transition: var(--transition);
     backdrop-filter: blur(20px);
+    z-index: 999;
   }
   
   .nav-menu.active {
@@ -1657,34 +1667,118 @@ p {
   
   .portfolio-filter {
     justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+    font-size: 13px;
+    padding: 10px 20px;
   }
   
   .hero-buttons {
     flex-direction: column;
+    width: 100%;
   }
   
   .btn {
     width: 100%;
   }
   
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
   .modal-content {
     padding: 1.5rem;
     margin: 1rem;
+    max-height: 85vh;
+  }
+  
+  .trust-chips {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .trust-chip {
+    width: 100%;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
   .hero {
-    min-height: 60vh;
+    min-height: 50vh;
+    padding: 3rem 0;
   }
   
   .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-description {
+    font-size: 16px;
   }
   
   .services-grid,
+  .portfolio-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-band {
+    padding: 2.5rem 1rem;
+  }
+  
+  .cta-band h2 {
+    font-size: 24px;
+  }
+  
+  .cta-band p {
+    font-size: 16px;
+  }
+  
+  .process-step {
+    padding: 1.5rem 1rem;
+  }
+  
+  .service-card,
+  .portfolio-card {
+    padding: 1.5rem;
+  }
+  
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+    margin: 0.5rem;
   }
 }
 
