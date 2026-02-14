@@ -1498,9 +1498,6 @@ p {
   position: relative;
   z-index: 1;
 }
-  position: relative;
-  color: var(--text-100);
-}
 
 .footer-content {
   display: grid;
