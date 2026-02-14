@@ -169,11 +169,16 @@ p {
   background: var(--bg-white);
   border-bottom: 1px solid var(--line-gray);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: var(--transition);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transform: translateY(0);
 }
 
 .header.scrolled {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header.header-hidden {
+  transform: translateY(-100%);
 }
 
 .nav {

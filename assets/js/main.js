@@ -65,19 +65,36 @@
   setActiveNavLink();
 
   // ============================================
-  // Sticky Header Scroll Effect
+  // Sticky Header Scroll Effect - Hide on scroll down, show on scroll up
   // ============================================
   const header = document.querySelector('.header');
   let lastScroll = 0;
+  let scrollThreshold = 100; // Hide header after scrolling 100px
 
   if (header) {
     window.addEventListener('scroll', function() {
       const currentScroll = window.pageYOffset;
       
+      // Add scrolled class for styling
       if (currentScroll > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
+        header.classList.remove('header-hidden');
+      }
+      
+      // Hide/show header based on scroll direction
+      if (currentScroll > scrollThreshold) {
+        if (currentScroll > lastScroll) {
+          // Scrolling down - hide header
+          header.classList.add('header-hidden');
+        } else {
+          // Scrolling up - show header
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        // Near top of page - always show header
+        header.classList.remove('header-hidden');
       }
       
       lastScroll = currentScroll;
