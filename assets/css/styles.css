@@ -350,6 +350,9 @@ p {
   display: block;
   position: relative;
   z-index: 0;
+  object-fit: contain;
+  padding: 2rem;
+  background: var(--bg-white);
 }
 
 .hero-buttons {
