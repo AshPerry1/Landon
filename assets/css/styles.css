@@ -169,11 +169,6 @@ main {
   transform: rotate(90deg);
 }
 
-/* Adjust header position when banner is visible */
-body.has-valentines-banner .header {
-  top: 60px;
-}
-
 @media (max-width: 768px) {
   .valentines-banner-content {
     padding: 0 var(--side-padding-mobile);
