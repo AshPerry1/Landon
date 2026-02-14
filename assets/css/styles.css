@@ -833,6 +833,16 @@ p {
   padding: 2.5rem;
   box-shadow: var(--shadow-medium);
   animation: modalSlideIn 0.3s ease-out;
+  color: var(--text-dark);
+}
+
+.modal-content h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: var(--text-dark);
 }
 
 .modal-content::before {
@@ -899,11 +909,10 @@ p {
 .modal-detail-item h4 {
   font-size: 13px;
   font-weight: 700;
-  color: var(--gold-300);
+  color: var(--gold-600);
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  text-shadow: 0 1px 5px rgba(240, 230, 210, 0.3);
   position: relative;
   padding-bottom: 0.5rem;
 }
@@ -916,7 +925,6 @@ p {
   width: 40px;
   height: 1px;
   background: var(--gold-gradient);
-  box-shadow: 0 0 8px rgba(240, 230, 210, 0.5);
 }
 
 .modal-detail-item ul {
@@ -925,8 +933,12 @@ p {
 }
 
 .modal-detail-item li {
-  color: var(--text-200);
+  color: var(--text-dark);
   padding: 0.25rem 0;
+}
+
+.modal-detail-item p {
+  color: var(--text-dark);
 }
 
 /* Testimonials */

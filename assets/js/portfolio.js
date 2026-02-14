@@ -192,8 +192,8 @@
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <img src="${imagePath}" alt="${project.title}" class="modal-image" onerror="this.onerror=null; this.src='${fallbackImage}';">
       <h2>${project.title}</h2>
-      <p style="color: var(--text-200); margin-bottom: 1rem;">${project.location}</p>
-      <p style="color: var(--text-200); margin-bottom: 2rem;">${project.summary}</p>
+      <p style="color: var(--text-gray); margin-bottom: 1rem;">${project.location}</p>
+      <p style="color: var(--text-dark); margin-bottom: 2rem;">${project.summary}</p>
       
       <div class="modal-details">
         <div class="modal-detail-item">
