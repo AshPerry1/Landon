@@ -1647,10 +1647,33 @@ p {
     transition: var(--transition);
     backdrop-filter: blur(20px);
     z-index: 999;
+    padding: 2rem 0;
   }
   
   .nav-menu.active {
     left: 0;
+  }
+  
+  .nav-menu li {
+    list-style: none;
+  }
+  
+  .nav-menu .nav-link {
+    color: var(--text-100);
+    font-size: 20px;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    display: block;
+    text-align: center;
+  }
+  
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link.active {
+    color: var(--gold-400);
+  }
+  
+  .nav-menu .nav-link::after {
+    display: none;
   }
   
   .nav-toggle {
