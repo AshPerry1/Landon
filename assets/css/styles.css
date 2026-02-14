@@ -268,8 +268,12 @@ p {
   background: var(--bg-white);
   border-bottom: 1px solid var(--line-gray);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, top 0.3s ease;
   transform: translateY(0);
+}
+
+body.has-valentines-banner .header {
+  top: 60px;
 }
 
 .header.scrolled {
