@@ -299,6 +299,47 @@
   }
 
   // ============================================
+  // Valentine's Day Banner
+  // ============================================
+  function initValentinesBanner() {
+    const banner = document.getElementById('valentinesBanner');
+    if (!banner) return;
+
+    // Check if banner was already dismissed
+    const dismissed = localStorage.getItem('valentinesBannerDismissed');
+    if (dismissed === 'true') {
+      return;
+    }
+
+    // Check if we're past February 14th
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const valentinesDay = new Date(currentYear, 1, 14); // Month is 0-indexed, so 1 = February
+    const dayAfterValentines = new Date(currentYear, 1, 15);
+
+    // Only show banner if today is on or before February 14th
+    if (today > dayAfterValentines) {
+      // Past Valentine's Day - hide forever
+      localStorage.setItem('valentinesBannerDismissed', 'true');
+      return;
+    }
+
+    // Show the banner
+    banner.style.display = 'block';
+    document.body.classList.add('has-valentines-banner');
+
+    // Close button handler
+    const closeBtn = banner.querySelector('.valentines-banner-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        banner.style.display = 'none';
+        document.body.classList.remove('has-valentines-banner');
+        localStorage.setItem('valentinesBannerDismissed', 'true');
+      });
+    }
+  }
+
+  // ============================================
   // Initialize on DOM Ready
   // ============================================
   document.addEventListener('DOMContentLoaded', function() {
@@ -306,6 +347,9 @@
     
     // Set active nav link after DOM is ready
     setActiveNavLink();
+    
+    // Initialize Valentine's Day banner
+    initValentinesBanner();
   });
 
 })();

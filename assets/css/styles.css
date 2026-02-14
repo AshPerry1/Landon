@@ -98,6 +98,103 @@ main {
   z-index: 1;
 }
 
+/* Valentine's Day Banner */
+.valentines-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+  color: white;
+  padding: 1rem 0;
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.valentines-banner-content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding-desktop);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.valentines-banner-content p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+.valentines-banner-close {
+  position: absolute;
+  right: var(--side-padding-desktop);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+  padding: 0;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.valentines-banner-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Adjust header position when banner is visible */
+body.has-valentines-banner .header {
+  top: 60px;
+}
+
+@media (max-width: 768px) {
+  .valentines-banner-content {
+    padding: 0 var(--side-padding-mobile);
+  }
+  
+  .valentines-banner-content p {
+    font-size: 16px;
+  }
+  
+  .valentines-banner-close {
+    right: var(--side-padding-mobile);
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+  
+  body.has-valentines-banner .header {
+    top: 56px;
+  }
+}
+
 /* Typography - Clean and professional like Pike Properties */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cinzel', serif;
