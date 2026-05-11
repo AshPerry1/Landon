@@ -207,7 +207,7 @@
         `Message:\n${message}`
       );
       
-      const mailtoLink = `mailto:info@gwproperties.com?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:landongreen898@gmail.com?subject=${subject}&body=${body}`;
       
       // Show confirmation message
       const submitMessage = document.querySelector('.form-submit-message');
