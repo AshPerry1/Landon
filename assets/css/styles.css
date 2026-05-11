@@ -1220,20 +1220,21 @@ body.has-valentines-banner .header {
 /* Stats */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0 0;
 }
 
 .stat-card {
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.25rem;
   background: var(--bg-white);
   border: 1px solid var(--line-gray);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   transition: var(--transition);
   position: relative;
+  min-width: 0;
 }
 
 .stat-card::before {
@@ -1260,20 +1261,54 @@ body.has-valentines-banner .header {
 }
 
 .stat-number {
-  font-size: 42px;
+  font-size: clamp(1.5rem, 3.4vw, 2.125rem);
   font-weight: 700;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.75rem;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 .stat-label {
-  color: var(--text-gray);
+  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+
+.credentials-footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-gray);
+}
+
+.credentials-footer-email {
+  margin: 0 0 0.75rem;
+}
+
+.credentials-footer-email a {
+  color: var(--bg-900);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.credentials-footer-email a:hover {
+  color: var(--gold-600);
+}
+
+.credentials-footer-note {
+  margin: 0;
   font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.6;
 }
 
 /* Forms */
