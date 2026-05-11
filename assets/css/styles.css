@@ -416,6 +416,30 @@ body.has-valentines-banner .header {
   opacity: 0.6;
 }
 
+/* Inner pages (About, Services, etc.): short title band — not a full-height strip */
+.hero.hero-page {
+  min-height: 0;
+  padding: 4.5rem 0 4.25rem;
+  align-items: center;
+}
+
+.hero.hero-page .section-header {
+  margin-bottom: 0;
+}
+
+.hero.hero-page .section-header h1:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.hero.hero-page .section-header h1:last-child {
+  margin-bottom: 0;
+}
+
+.hero.hero-page .section-header h1::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .hero.white {
   background: var(--bg-white);
   color: var(--text-dark);
@@ -2001,6 +2025,11 @@ body.has-valentines-banner .header {
     min-height: 60vh;
     padding: var(--section-padding-mobile) 0;
   }
+
+  .hero.hero-page {
+    min-height: 0;
+    padding: 3.5rem 0 3.25rem;
+  }
   
   .cta-band {
     padding: 3rem 1.5rem;
@@ -2008,6 +2037,10 @@ body.has-valentines-banner .header {
   
   .section-header {
     margin-bottom: 2rem;
+  }
+
+  .hero.hero-page .section-header {
+    margin-bottom: 0;
   }
   
   .nav-menu {
@@ -2162,9 +2195,18 @@ body.has-valentines-banner .header {
     min-height: 50vh;
     padding: 3rem 0;
   }
+
+  .hero.hero-page {
+    min-height: 0;
+    padding: 2.75rem 0 2.5rem;
+  }
   
   .section-header {
     margin-bottom: 1.5rem;
+  }
+
+  .hero.hero-page .section-header {
+    margin-bottom: 0;
   }
   
   .section-description {
