@@ -1873,10 +1873,13 @@ body.has-valentines-banner .header {
   max-width: 38rem;
   justify-self: center;
   width: 100%;
+  text-align: center;
 }
 
 .about-landon-row .about-text p:not(.about-landon-cta) {
   max-width: none;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 1.25rem;
   color: var(--text-dark);
   font-size: 17px;
@@ -1888,6 +1891,12 @@ body.has-valentines-banner .header {
   margin-bottom: 0;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line-gray);
+  text-align: center;
+}
+
+.about-landon-cta .btn {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-expect-list {
