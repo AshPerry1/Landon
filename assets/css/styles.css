@@ -45,7 +45,8 @@
   
   /* Spacing - More generous white space like Pike Properties */
   --section-padding-desktop: 120px;
-  --section-padding-mobile: 80px;
+  --section-padding-mobile: 64px;
+  --touch-min: 44px;
   --container-max-width: 1200px;
   --side-padding-desktop: 32px;
   --side-padding-mobile: 20px;
@@ -68,6 +69,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  scroll-padding-top: 5.5rem;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Reduced Motion Support */
@@ -92,6 +101,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 main {
@@ -180,10 +190,10 @@ main {
   }
   
   .valentines-banner-close {
-    right: var(--side-padding-mobile);
-    width: 28px;
-    height: 28px;
-    font-size: 20px;
+    right: max(var(--side-padding-mobile), env(safe-area-inset-right));
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
   }
   
   body.has-valentines-banner .header {
@@ -266,6 +276,8 @@ p {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, top 0.3s ease;
   transform: translateY(0);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 body.has-valentines-banner .header {
@@ -340,12 +352,17 @@ body.has-valentines-banner .header {
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
   z-index: 1001;
+  touch-action: manipulation;
 }
 
 .nav-toggle span {
@@ -2045,6 +2062,10 @@ main > .section.section.dark:last-of-type {
 }
 
 @media (max-width: 768px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
   h1 {
     font-size: 34px;
   }
@@ -2058,7 +2079,8 @@ main > .section.section.dark:last-of-type {
   }
   
   .container {
-    padding: 0 var(--side-padding-mobile);
+    padding-left: max(var(--side-padding-mobile), env(safe-area-inset-left));
+    padding-right: max(var(--side-padding-mobile), env(safe-area-inset-right));
   }
   
   .section {
@@ -2067,6 +2089,13 @@ main > .section.section.dark:last-of-type {
 
   main > .section.section.dark:last-of-type {
     padding-bottom: 3rem;
+  }
+
+  .btn,
+  .nav-menu .nav-link,
+  .filter-btn,
+  .accordion-button {
+    touch-action: manipulation;
   }
   
   .hero {
@@ -2100,7 +2129,10 @@ main > .section.section.dark:last-of-type {
     top: 0;
     left: -100%;
     width: 100%;
+    width: 100vw;
     height: 100vh;
+    height: 100dvh;
+    min-height: -webkit-fill-available;
     background: var(--bg-900);
     flex-direction: column;
     justify-content: center;
@@ -2109,7 +2141,9 @@ main > .section.section.dark:last-of-type {
     transition: var(--transition);
     backdrop-filter: blur(20px);
     z-index: 999;
-    padding: 2rem 0;
+    padding: max(2rem, env(safe-area-inset-top)) max(var(--side-padding-mobile), env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(var(--side-padding-mobile), env(safe-area-inset-left));
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-menu.active {
@@ -2124,8 +2158,11 @@ main > .section.section.dark:last-of-type {
     color: var(--text-100);
     font-size: 20px;
     font-weight: 500;
-    padding: 1rem 2rem;
-    display: block;
+    padding: 0.875rem 1.5rem;
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
   }
   
@@ -2176,6 +2213,12 @@ main > .section.section.dark:last-of-type {
     gap: 2rem;
     text-align: center;
   }
+
+  .footer-info .footer-link,
+  .footer-links .footer-link {
+    display: inline-block;
+    padding: 0.65rem 0;
+  }
   
   .footer-social {
     justify-content: center;
@@ -2187,8 +2230,9 @@ main > .section.section.dark:last-of-type {
   }
   
   .filter-btn {
-    font-size: 13px;
-    padding: 10px 20px;
+    font-size: 14px;
+    padding: 12px 18px;
+    min-height: var(--touch-min);
   }
   
   .hero-buttons {
@@ -2217,6 +2261,14 @@ main > .section.section.dark:last-of-type {
     padding: 1.5rem;
     margin: 1rem;
     max-height: 85vh;
+  }
+
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    touch-action: manipulation;
   }
   
   .trust-chips {
@@ -2302,7 +2354,7 @@ main > .section.section.dark:last-of-type {
   }
   
   .footer {
-    padding: 3rem 0 2rem;
+    padding: 3rem 0 max(2rem, calc(env(safe-area-inset-bottom) + 1rem));
   }
   
   .modal-content {
