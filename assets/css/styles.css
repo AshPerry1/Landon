@@ -2129,7 +2129,6 @@ main > .section.section.dark:last-of-type {
     top: 0;
     left: -100%;
     width: 100%;
-    width: 100vw;
     height: 100vh;
     height: 100dvh;
     min-height: -webkit-fill-available;
