@@ -1623,9 +1623,14 @@ body.has-valentines-banner .header {
   background: var(--bg-900);
   border-top: 1px solid var(--line);
   padding: 5rem 0 2.5rem;
-  margin-top: 8rem;
+  margin-top: 0;
   position: relative;
   overflow: hidden;
+}
+
+/* Last dark band (e.g. See Our Work) sits flush above footer — avoid double tall padding + gap */
+main > .section.section.dark:last-of-type {
+  padding-bottom: 4.5rem;
 }
 
 .footer::before {
@@ -2081,6 +2086,10 @@ body.has-valentines-banner .header {
   
   .section {
     padding: var(--section-padding-mobile) 0;
+  }
+
+  main > .section.section.dark:last-of-type {
+    padding-bottom: 3rem;
   }
   
   .hero {
