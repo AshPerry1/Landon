@@ -1844,17 +1844,50 @@ body.has-valentines-banner .header {
   margin-top: 2.75rem;
 }
 
-.about-landon-row {
-  align-items: center;
+.about-meet-section .section-header {
+  margin-bottom: 3rem;
 }
 
-.about-landon-cta {
-  margin-top: 1.75rem;
-  margin-bottom: 0;
+.two-column.about-landon-row {
+  grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
 }
 
 .about-landon-row .about-photo {
   margin-bottom: 0;
+}
+
+@media (min-width: 769px) {
+  .about-landon-row .about-photo {
+    justify-self: end;
+  }
+
+  .about-landon-row .about-photo img {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.about-landon-row .about-text {
+  max-width: 38rem;
+  justify-self: center;
+  width: 100%;
+}
+
+.about-landon-row .about-text p:not(.about-landon-cta) {
+  max-width: none;
+  margin-bottom: 1.25rem;
+  color: var(--text-dark);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.about-landon-cta {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-gray);
 }
 
 .about-expect-list {
