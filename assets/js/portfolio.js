@@ -43,14 +43,14 @@
     }
 
     if (!projectsData || projectsData.length === 0) {
-      container.innerHTML = '<p style="text-align: center; color: var(--text-200);">Projects loading...</p>';
+      container.innerHTML = '<p style="text-align: center; color: var(--text-gray);">Projects loading...</p>';
       return;
     }
 
     const featuredProjects = projectsData.filter(p => p.featured).slice(0, 3);
     
     if (featuredProjects.length === 0) {
-      container.innerHTML = '<p style="text-align: center; color: var(--text-200);">No featured projects available at this time.</p>';
+      container.innerHTML = '<p style="text-align: center; color: var(--text-gray);">No featured projects available at this time.</p>';
       return;
     }
 

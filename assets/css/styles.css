@@ -25,7 +25,8 @@
   --text-200: #f0ede5;
   --text-300: #e0ddd5;
   --text-dark: #1A3328;
-  --text-gray: #6c757d;
+  /* Muted body / secondary text — dark enough for comfortable reading on white */
+  --text-gray: #495057;
   
   /* Borders & Lines */
   --line: rgba(211, 187, 123, 0.3);
@@ -772,7 +773,7 @@ body.has-valentines-banner .header {
 
 .service-card li {
   padding: 0.5rem 0;
-  color: var(--text-200);
+  color: var(--text-gray);
   position: relative;
   padding-left: 1.5rem;
 }
@@ -1306,7 +1307,7 @@ body.has-valentines-banner .header {
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: var(--text-gray);
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .form-input:focus,
@@ -1687,11 +1688,10 @@ body.has-valentines-banner .header {
   text-align: center;
   padding-top: 2.5rem;
   border-top: 1px solid rgba(240, 230, 210, 0.15);
-  color: var(--text-300);
+  color: var(--text-200);
   font-size: 13px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  opacity: 0.8;
 }
 
 /* Contact Info Cards */
