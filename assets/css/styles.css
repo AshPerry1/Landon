@@ -1313,7 +1313,7 @@ body.has-valentines-banner .header {
 }
 
 .credentials-footer-email {
-  margin: 0 0 0.75rem;
+  margin: 0;
 }
 
 .credentials-footer-email a {
@@ -1326,13 +1326,6 @@ body.has-valentines-banner .header {
 
 .credentials-footer-email a:hover {
   color: var(--gold-600);
-}
-
-.credentials-footer-note {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-gray);
-  line-height: 1.6;
 }
 
 /* Forms */
