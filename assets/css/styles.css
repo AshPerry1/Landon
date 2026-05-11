@@ -1596,6 +1596,28 @@ body.has-valentines-banner .header {
   margin: 0 auto;
 }
 
+/* Bottom CTAs live inside `.section.dark` — avoid a second nested green “card” */
+.section.dark .cta-band {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section.dark .cta-band::before {
+  display: none;
+}
+
+.cta-band .section-header {
+  margin-bottom: 2rem;
+}
+
+.cta-band .section-description {
+  margin-bottom: 0;
+}
+
 /* Footer */
 .footer {
   background: var(--bg-900);
@@ -2032,6 +2054,10 @@ body.has-valentines-banner .header {
   .cta-band {
     padding: 3rem 1.5rem;
   }
+
+  .section.dark .cta-band {
+    padding: 0;
+  }
   
   .section-header {
     margin-bottom: 2rem;
@@ -2224,6 +2250,10 @@ body.has-valentines-banner .header {
   
   .cta-band {
     padding: 2.5rem 1rem;
+  }
+
+  .section.dark .cta-band {
+    padding: 0;
   }
   
   .cta-band h2 {
