@@ -1305,29 +1305,6 @@ body.has-valentines-banner .header {
   opacity: 0.92;
 }
 
-.credentials-footer {
-  text-align: center;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line-gray);
-}
-
-.credentials-footer-email {
-  margin: 0;
-}
-
-.credentials-footer-email a {
-  color: var(--bg-900);
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.credentials-footer-email a:hover {
-  color: var(--gold-600);
-}
-
 /* Forms */
 .form-group {
   margin-bottom: 1.5rem;
