@@ -116,7 +116,7 @@
     }
 
     const { imageBase } = getPaths();
-    const fallbackImage = imageBase + 'assets/img/home.png';
+    const fallbackImage = imageBase + 'assets/img/portfolio-kitchen.png';
 
     container.innerHTML = featuredProjects.map((project) => projectCardMarkup(project, imageBase, fallbackImage)).join('');
 
@@ -187,7 +187,7 @@
     }
 
     const { imageBase } = getPaths();
-    const fallbackImage = imageBase + 'assets/img/home.png';
+    const fallbackImage = imageBase + 'assets/img/portfolio-kitchen.png';
 
     container.innerHTML = filteredProjects
       .map((project) => projectCardMarkup(project, imageBase, fallbackImage))
@@ -232,7 +232,7 @@
     const imagePath = project.image.startsWith('http')
       ? project.image
       : imageBase + project.image;
-    const fallbackImage = imageBase + 'assets/img/home.png';
+    const fallbackImage = imageBase + 'assets/img/portfolio-kitchen.png';
 
     const title = escapeHtml(project.title);
     const location = escapeHtml(project.location || '');

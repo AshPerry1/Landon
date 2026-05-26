@@ -1,86 +1,114 @@
 [
   {
     "id": "p1",
-    "title": "Modern Kitchen Renovation",
-    "location": "Birmingham, AL",
+    "title": "Gourmet Kitchen",
+    "location": "Alabama",
     "category": "Renovations",
-    "image": "assets/img/home.png",
+    "image": "assets/img/portfolio-kitchen.png",
     "featured": true,
-    "summary": "Full gut renovation with custom cabinetry and upgraded finishes.",
+    "summary": "Custom shaker cabinetry, marble surfaces, statement lighting, and a full suite of professional appliances.",
     "details": {
-      "scope": ["Cabinetry", "Flooring", "Lighting", "Appliances"],
-      "timeline": "6 weeks",
-      "highlights": ["Improved layout", "Premium finishes", "On-time completion"]
+      "scope": ["Cabinetry", "Countertops", "Backsplash", "Lighting", "Appliance integration"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Brass accents", "Range & hood wall", "Island seating and prep zone"]
     }
   },
   {
     "id": "p2",
-    "title": "Custom Home Build",
-    "location": "Mountain Brook, AL",
-    "category": "New Builds",
-    "image": "assets/img/home.png",
+    "title": "Great Room & Stone Fireplace",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-living-fireplace.png",
     "featured": true,
-    "summary": "3,200 sq ft custom residence with modern craftsman design.",
+    "summary": "Floor-to-ceiling stone fireplace, tailored millwork, and layered lighting for a bright, welcoming living space.",
     "details": {
-      "scope": ["Foundation", "Framing", "Roofing", "Interior Finishes", "Landscaping"],
-      "timeline": "10 months",
-      "highlights": ["Energy efficient", "Custom design", "Premium materials"]
+      "scope": ["Masonry & fireplace", "Millwork", "Flooring", "Lighting"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Natural stone feature wall", "Curated finishes", "Open living flow"]
     }
   },
   {
     "id": "p3",
-    "title": "Outdoor Deck & Patio",
-    "location": "Vestavia Hills, AL",
-    "category": "Outdoor",
-    "image": "assets/img/home.png",
-    "featured": true,
-    "summary": "Composite deck with stone patio and pergola structure.",
+    "title": "Custom Fireplace Detail",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-fireplace-detail.png",
+    "featured": false,
+    "summary": "Precision stonework, crisp painted surround, and a modern fire feature with tailored hearth stone.",
     "details": {
-      "scope": ["Deck Construction", "Patio Installation", "Pergola", "Railings"],
-      "timeline": "3 weeks",
-      "highlights": ["Low maintenance materials", "Extended living space", "Weather resistant"]
+      "scope": ["Fireplace refacing", "Mantel & surround", "Hearth", "Finish carpentry"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Texture-rich stone", "Clean contemporary lines", "Built to showcase the room"]
     }
   },
   {
     "id": "p4",
-    "title": "Master Bathroom Remodel",
-    "location": "Homewood, AL",
+    "title": "Dining Space",
+    "location": "Alabama",
     "category": "Renovations",
-    "image": "assets/img/home.png",
+    "image": "assets/img/portfolio-dining.png",
     "featured": false,
-    "summary": "Luxury bathroom renovation with walk-in shower and freestanding tub.",
+    "summary": "Light-filled dining area with layered lighting, natural wood tones, and a calm neutral palette.",
     "details": {
-      "scope": ["Plumbing", "Tile Work", "Vanity", "Lighting", "Fixtures"],
-      "timeline": "4 weeks",
-      "highlights": ["Spa-like design", "Premium fixtures", "Increased home value"]
+      "scope": ["Interior finishes", "Lighting", "Trim & paint coordination"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Accent chandelier", "Soft contrast materials", "Indoor-outdoor sight lines"]
     }
   },
   {
     "id": "p5",
-    "title": "Office Building Renovation",
-    "location": "Birmingham, AL",
-    "category": "Commercial",
-    "image": "assets/img/home.png",
-    "featured": false,
-    "summary": "Commercial space renovation with modern finishes and improved layout.",
+    "title": "Spa Wet Room",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-bathroom-wetroom.png",
+    "featured": true,
+    "summary": "Glass-enclosed wet area with marble-look walls, mosaic floor, tub niche, and coordinated brass fixtures.",
     "details": {
-      "scope": ["Demolition", "New Walls", "Flooring", "Lighting", "Paint"],
-      "timeline": "8 weeks",
-      "highlights": ["Minimal disruption", "Modern aesthetic", "On budget"]
+      "scope": ["Glass enclosure", "Tile & stone", "Plumbing fixtures", "Waterproofing"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Symmetrical layout", "Luxury hardware", "Spa-ready atmosphere"]
     }
   },
   {
     "id": "p6",
-    "title": "Home Addition",
-    "location": "Hoover, AL",
-    "category": "New Builds",
-    "image": "assets/img/home.png",
+    "title": "Freestanding Tub Suite",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-bathroom-tub.png",
     "featured": false,
-    "summary": "500 sq ft addition with new master suite and walk-in closet.",
+    "summary": "Statement soaking tub with marble-vein wall tile, mosaic floor, and wall-mounted brass fittings.",
     "details": {
-      "scope": ["Foundation", "Framing", "Roofing", "Interior", "HVAC"],
-      "timeline": "12 weeks",
-      "highlights": ["Seamless integration", "Increased square footage", "Quality craftsmanship"]
+      "scope": ["Tile installation", "Plumbing", "Fixtures", "Lighting"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Clean symmetry", "High-contrast veining", "Polished details"]
+    }
+  },
+  {
+    "id": "p7",
+    "title": "Custom Residence — Hillside",
+    "location": "Alabama",
+    "category": "New Builds",
+    "image": "assets/img/portfolio-exterior-slope.png",
+    "featured": false,
+    "summary": "New home on a sloped lot: white brick, stone entry, dark shingle roof, and integrated landscaping.",
+    "details": {
+      "scope": ["Exterior envelope", "Masonry", "Roofing", "Site & landscape coordination"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Strong curb presence", "Stone & brick contrast", "Terrain-aware build"]
+    }
+  },
+  {
+    "id": "p8",
+    "title": "Exterior & Entry",
+    "location": "Alabama",
+    "category": "New Builds",
+    "image": "assets/img/portfolio-exterior-entry.png",
+    "featured": false,
+    "summary": "Stone arch entry, painted brick, concrete steps, and planted beds with clean metal railings.",
+    "details": {
+      "scope": ["Masonry", "Hardscape steps", "Exterior lighting", "Landscape beds"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Inviting approach", "Durable materials", "Crisp black & white contrast"]
     }
   }
 ]
