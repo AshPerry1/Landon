@@ -836,7 +836,7 @@ body.has-valentines-banner .header {
 
 .work-preview-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   align-items: stretch;
 }

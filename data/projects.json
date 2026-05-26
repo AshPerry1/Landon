@@ -110,5 +110,89 @@
       "timeline": "Custom timeline per scope",
       "highlights": ["Inviting approach", "Durable materials", "Crisp black & white contrast"]
     }
+  },
+  {
+    "id": "p9",
+    "title": "Detached Garage Wing",
+    "location": "Alabama",
+    "category": "New Builds",
+    "image": "assets/img/portfolio-garage-wing.png",
+    "featured": false,
+    "summary": "Matching garage structure with brick, shake gable detail, carriage-style door, and coordinated trim.",
+    "details": {
+      "scope": ["Foundation", "Framing", "Exterior finishes", "Garage doors", "Gutters"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Consistent architectural language", "Durable cladding mix", "Clean roof lines"]
+    }
+  },
+  {
+    "id": "p10",
+    "title": "Custom Craftsman Residence",
+    "location": "Alabama",
+    "category": "New Builds",
+    "image": "assets/img/portfolio-custom-home-front.png",
+    "featured": false,
+    "summary": "Full front elevation with stone accents, lap and shake siding, timber truss details, and matching detached garage.",
+    "details": {
+      "scope": ["Structural shell", "Masonry veneers", "Siding & trim", "Windows & doors", "Landscape frontage"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Street presence", "Material balance", "Integrated garage"]
+    }
+  },
+  {
+    "id": "p11",
+    "title": "Screened Outdoor Living",
+    "location": "Alabama",
+    "category": "Outdoor",
+    "image": "assets/img/portfolio-screened-porch.png",
+    "featured": false,
+    "summary": "Vaulted wood ceiling, brick fireplace with timber mantel, tile floor, and flow to the deck beyond.",
+    "details": {
+      "scope": ["Masonry fireplace", "Wood ceiling", "Tile flooring", "Screens & openings", "Lighting"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Year-round gathering space", "Natural texture mix", "Indoor-outdoor connection"]
+    }
+  },
+  {
+    "id": "p12",
+    "title": "Laundry & Millwork Wall",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-laundry-room.png",
+    "featured": false,
+    "summary": "Floor-to-ceiling white shaker cabinetry, veined quartz counter, textured backsplash, and thoughtful hardware layout.",
+    "details": {
+      "scope": ["Custom cabinets", "Countertops", "Backsplash tile", "Plumbing", "Flooring"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["High storage capacity", "Clean utility zone", "Coordinated finishes"]
+    }
+  },
+  {
+    "id": "p13",
+    "title": "Walk-In Pantry",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-walk-in-pantry.png",
+    "featured": false,
+    "summary": "Built-in open shelving on three walls, crown detail, and bright natural light for everyday organization.",
+    "details": {
+      "scope": ["Custom shelving", "Trim & paint", "Door upgrade", "Lighting"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Efficient layout", "Crisp white finish", "Move-in ready storage"]
+    }
+  },
+  {
+    "id": "p14",
+    "title": "Bright White Kitchen",
+    "location": "Alabama",
+    "category": "Renovations",
+    "image": "assets/img/portfolio-kitchen-bright.png",
+    "featured": false,
+    "summary": "Floor-to-ceiling white cabinetry, large island with veined countertop, pendents, and pro-style stainless appliances.",
+    "details": {
+      "scope": ["Cabinetry", "Island", "Counters & backsplash", "Appliances", "Lighting"],
+      "timeline": "Custom timeline per scope",
+      "highlights": ["Open layout", "Layered lighting", "Timeless palette"]
+    }
   }
 ]
