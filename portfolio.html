@@ -77,23 +77,31 @@
       <div class="container">
         <div class="section-header">
           <h1>Portfolio</h1>
-          <p class="section-description">A showcase of our completed projects and craftsmanship</p>
+          <p class="section-description">Selected work—from new builds to renovations—organized for easy browsing.</p>
         </div>
       </div>
     </section>
 
-    <section class="section white">
+    <section class="section white portfolio-showcase-section">
       <div class="container">
-        <div class="portfolio-filter">
-          <button class="filter-btn active" data-filter="All">All</button>
-          <button class="filter-btn" data-filter="New Builds">New Builds</button>
-          <button class="filter-btn" data-filter="Renovations">Renovations</button>
-          <button class="filter-btn" data-filter="Outdoor">Outdoor</button>
-          <button class="filter-btn" data-filter="Commercial">Commercial</button>
+        <header class="portfolio-showcase-intro">
+          <h2 class="portfolio-showcase-heading">Project gallery</h2>
+          <p class="portfolio-showcase-lead">Tap a photo to view scope, timeline, and highlights.</p>
+        </header>
+
+        <div class="portfolio-showcase-toolbar" aria-live="polite">
+          <p class="portfolio-showcase-count" id="portfolioCount">Loading projects…</p>
         </div>
-        <div class="portfolio-grid" id="portfolioGrid">
+
+        <div id="portfolioFilters" class="portfolio-filters-strip" role="group" aria-label="Filter portfolio by category">
+          <!-- Filter buttons injected from data/projects.json -->
+        </div>
+
+        <div class="portfolio-grid portfolio-grid-enhanced" id="portfolioGrid" role="list" aria-label="Portfolio projects">
           <!-- Projects loaded via portfolio.js -->
         </div>
+
+        <p id="portfolioEmpty" class="portfolio-empty" hidden>No projects match this filter.</p>
       </div>
     </section>
 
@@ -137,7 +145,7 @@
   </footer>
 
   <!-- Project Modal -->
-  <div id="projectModal" class="modal">
+  <div id="projectModal" class="modal" role="dialog" aria-label="Project details" aria-hidden="true">
     <div class="modal-content">
       <!-- Content loaded via portfolio.js -->
     </div>

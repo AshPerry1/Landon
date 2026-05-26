@@ -1,6 +1,6 @@
 /**
  * GW Properties & Development LLC - Portfolio JavaScript
- * Handles portfolio grid rendering, filtering, and modal functionality
+ * Grid, filtering, modal detail view
  */
 
 (function() {
@@ -9,207 +9,259 @@
   let projectsData = [];
   let currentFilter = 'All';
 
-  // ============================================
-  // Load Projects Data
-  // ============================================
+  function escapeHtml(text) {
+    if (text == null) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function getPaths() {
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+    const imageBase = basePath ? `${basePath}/` : '';
+    return { basePath, imageBase };
+  }
+
   async function loadProjects() {
     try {
-      // Determine base path for GitHub Pages
-      const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+      const { basePath } = getPaths();
       const jsonPath = basePath ? `${basePath}/data/projects.json` : 'data/projects.json';
-      
+
       const response = await fetch(jsonPath);
       if (!response.ok) {
         throw new Error(`Failed to load projects data: ${response.status}`);
       }
       projectsData = await response.json();
-      console.log('Projects loaded successfully:', projectsData.length);
       return projectsData;
     } catch (error) {
       console.error('Error loading projects:', error);
-      // Return empty array so site still works
       return [];
     }
   }
 
-  // ============================================
-  // Render Featured Projects (Home Page)
-  // ============================================
+  function deriveCategories(projects) {
+    const cats = [...new Set(projects.map((p) => p.category).filter(Boolean))];
+    cats.sort((a, b) => a.localeCompare(b));
+    return cats;
+  }
+
+  function countForCategory(category) {
+    if (category === 'All') return projectsData.length;
+    return projectsData.filter((p) => p.category === category).length;
+  }
+
+  function renderFilterButtons() {
+    const container = document.getElementById('portfolioFilters');
+    if (!container || !projectsData.length) return;
+
+    const categories = deriveCategories(projectsData);
+    const pills = [{ label: 'All', value: 'All' }]
+      .concat(categories.map((c) => ({ label: c, value: c })));
+
+    container.innerHTML = pills
+      .map(
+        ({ label, value }, i) =>
+          `<button type="button" class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${escapeHtml(value)}">${escapeHtml(label)} <span aria-hidden="true">(${countForCategory(value)})</span></button>`
+      )
+      .join('');
+  }
+
+  function updatePortfolioEmpty(visibleCount) {
+    const el = document.getElementById('portfolioEmpty');
+    if (!el) return;
+    if (visibleCount === 0) {
+      el.hidden = false;
+    } else {
+      el.hidden = true;
+    }
+  }
+
+  function updatePortfolioCount(filter, filteredCount) {
+    const el = document.getElementById('portfolioCount');
+    if (!el) return;
+
+    if (!projectsData.length) {
+      el.textContent = 'No projects to display yet.';
+      return;
+    }
+
+    if (filter === 'All') {
+      el.textContent = `${filteredCount} project${filteredCount === 1 ? '' : 's'}`;
+    } else {
+      el.textContent = `${filteredCount} project${filteredCount === 1 ? '' : 's'} in ${filter}`;
+    }
+  }
+
+  function filterProjects(filter) {
+    if (filter === 'All') return projectsData.slice();
+    return projectsData.filter((p) => p.category === filter);
+  }
+
   function renderFeaturedProjects(containerId) {
     const container = document.getElementById(containerId);
-    if (!container) {
-      console.log('Featured projects container not found');
-      return;
-    }
+    if (!container) return;
 
     if (!projectsData || projectsData.length === 0) {
-      container.innerHTML = '<p style="text-align: center; color: var(--text-gray);">Projects loading...</p>';
+      container.innerHTML =
+        '<p style="text-align: center; color: var(--text-gray);">Projects loading...</p>';
       return;
     }
 
-    const featuredProjects = projectsData.filter(p => p.featured).slice(0, 3);
-    
+    const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 3);
+
     if (featuredProjects.length === 0) {
-      container.innerHTML = '<p style="text-align: center; color: var(--text-gray);">No featured projects available at this time.</p>';
+      container.innerHTML =
+        '<p style="text-align: center; color: var(--text-gray);">No featured projects available at this time.</p>';
       return;
     }
 
-    // Get base path for images
-    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
-    const imageBase = basePath ? `${basePath}/` : '';
+    const { imageBase } = getPaths();
     const fallbackImage = imageBase + 'assets/img/home.png';
 
-    container.innerHTML = featuredProjects.map(project => {
-      const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
-      
-      return `
-        <div class="portfolio-card" data-project-id="${project.id}">
-          <img src="${imagePath}" alt="${project.title}" class="portfolio-card-image" onerror="this.onerror=null; this.src='${fallbackImage}';">
-          <div class="portfolio-card-content">
-            <span class="portfolio-card-category">${project.category}</span>
-            <h3 class="portfolio-card-title">${project.title}</h3>
-            <p class="portfolio-card-location">${project.location}</p>
-            <p class="portfolio-card-summary">${project.summary}</p>
-          </div>
-        </div>
-      `;
-    }).join('');
+    container.innerHTML = featuredProjects.map((project) => projectCardMarkup(project, imageBase, fallbackImage)).join('');
 
-    // Add click handlers for featured projects
-    container.querySelectorAll('.portfolio-card').forEach(card => {
-      card.addEventListener('click', function() {
-        const projectId = this.getAttribute('data-project-id');
-        const project = projectsData.find(p => p.id === projectId);
-        if (project) {
-          openModal(project);
+    attachCardHandlers(container);
+  }
+
+  function projectCardMarkup(project, imageBase, fallbackImage) {
+    const imagePath = project.image.startsWith('http')
+      ? project.image
+      : imageBase + project.image;
+    const title = escapeHtml(project.title);
+    const category = escapeHtml(project.category || '');
+    const location = escapeHtml(project.location || '');
+    const summary = escapeHtml(project.summary || '');
+
+    return `
+      <article class="portfolio-card" tabindex="0" role="listitem" data-project-id="${escapeHtml(project.id)}"
+        aria-label="View details: ${title}">
+        <div class="portfolio-card-media">
+          <img src="${imagePath}" alt="" class="portfolio-card-image" loading="lazy" decoding="async"
+            onerror="this.onerror=null; this.src='${fallbackImage.replace(/'/g, "\\'")}';">
+          <div class="portfolio-card-overlay" aria-hidden="true"><span>View project</span></div>
+        </div>
+        <div class="portfolio-card-body">
+          ${category ? `<span class="portfolio-card-category">${category}</span>` : ''}
+          <h3 class="portfolio-card-title">${title}</h3>
+          ${location ? `<p class="portfolio-card-location">${location}</p>` : ''}
+          <p class="portfolio-card-summary">${summary}</p>
+        </div>
+      </article>`;
+  }
+
+  function attachCardHandlers(root) {
+    root.querySelectorAll('.portfolio-card').forEach((card) => {
+      const openForCard = () => {
+        const id = card.getAttribute('data-project-id');
+        const project = projectsData.find((p) => p.id === id);
+        if (project) openModal(project);
+      };
+
+      card.addEventListener('click', openForCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openForCard();
         }
       });
     });
   }
 
-  // ============================================
-  // Render Portfolio Grid (Portfolio Page)
-  // ============================================
   function renderPortfolioGrid(filter = 'All') {
     const container = document.getElementById('portfolioGrid');
     if (!container) return;
 
-    let filteredProjects = projectsData;
-    
-    if (filter !== 'All') {
-      filteredProjects = projectsData.filter(p => {
-        if (filter === 'New Builds') return p.category === 'New Builds';
-        if (filter === 'Renovations') return p.category === 'Renovations';
-        if (filter === 'Outdoor') return p.category === 'Outdoor';
-        if (filter === 'Commercial') return p.category === 'Commercial';
-        return true;
-      });
-    }
+    const filteredProjects = filterProjects(filter);
+    updatePortfolioCount(filter, filteredProjects.length);
+    updatePortfolioEmpty(filteredProjects.length);
 
-    if (filteredProjects.length === 0) {
-      container.innerHTML = '<p class="text-center">No projects found in this category.</p>';
+    if (!projectsData.length) {
+      container.innerHTML =
+        '<p class="portfolio-empty">Unable to load projects. Please refresh or try again later.</p>';
       return;
     }
 
-    // Get base path for images
-    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
-    const imageBase = basePath ? `${basePath}/` : '';
+    if (filteredProjects.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const { imageBase } = getPaths();
     const fallbackImage = imageBase + 'assets/img/home.png';
 
-    container.innerHTML = filteredProjects.map(project => {
-      const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
-      
-      return `
-        <div class="portfolio-card" data-project-id="${project.id}">
-          <img src="${imagePath}" alt="${project.title}" class="portfolio-card-image" onerror="this.onerror=null; this.src='${fallbackImage}';">
-          <div class="portfolio-card-content">
-            <span class="portfolio-card-category">${project.category}</span>
-            <h3 class="portfolio-card-title">${project.title}</h3>
-            <p class="portfolio-card-location">${project.location}</p>
-            <p class="portfolio-card-summary">${project.summary}</p>
-          </div>
-        </div>
-      `;
-    }).join('');
+    container.innerHTML = filteredProjects
+      .map((project) => projectCardMarkup(project, imageBase, fallbackImage))
+      .join('');
 
-    // Add click handlers
-    container.querySelectorAll('.portfolio-card').forEach(card => {
-      card.addEventListener('click', function() {
-        const projectId = this.getAttribute('data-project-id');
-        const project = projectsData.find(p => p.id === projectId);
-        if (project) {
-          openModal(project);
-        }
-      });
-    });
+    attachCardHandlers(container);
   }
 
-  // ============================================
-  // Portfolio Filter Functionality
-  // ============================================
   function initFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
-        currentFilter = filter;
-        
-        // Update active state
-        filterButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Re-render grid
-        renderPortfolioGrid(filter);
-        
-        // Track filter usage
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'portfolio_filter', {
-            'event_category': 'Portfolio',
-            'event_label': filter
-          });
-        }
-      });
+    const strip = document.getElementById('portfolioFilters');
+    if (!strip) return;
+
+    strip.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+
+      const filter = btn.getAttribute('data-filter');
+      if (filter === null || filter === undefined) return;
+
+      currentFilter = filter;
+
+      strip.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      renderPortfolioGrid(filter);
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'portfolio_filter', {
+          event_category: 'Portfolio',
+          event_label: filter,
+        });
+      }
     });
   }
 
-  // ============================================
-  // Modal / Lightbox Functionality
-  // ============================================
   function openModal(project) {
     const modal = document.getElementById('projectModal');
     if (!modal) return;
 
     const modalContent = modal.querySelector('.modal-content');
-    
-    // Get base path for images
-    const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
-    const imageBase = basePath ? `${basePath}/` : '';
-    const imagePath = project.image.startsWith('http') ? project.image : (imageBase + project.image);
+    const { imageBase } = getPaths();
+    const imagePath = project.image.startsWith('http')
+      ? project.image
+      : imageBase + project.image;
     const fallbackImage = imageBase + 'assets/img/home.png';
-    
+
+    const title = escapeHtml(project.title);
+    const location = escapeHtml(project.location || '');
+    const summary = escapeHtml(project.summary || '');
+    const scopeItems = (project.details && project.details.scope) || [];
+    const highlights = (project.details && project.details.highlights) || [];
+    const timeline = escapeHtml((project.details && project.details.timeline) || '—');
+
     modalContent.innerHTML = `
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <img src="${imagePath}" alt="${project.title}" class="modal-image" onerror="this.onerror=null; this.src='${fallbackImage}';">
-      <h2>${project.title}</h2>
-      <p style="color: var(--text-gray); margin-bottom: 1rem;">${project.location}</p>
-      <p style="color: var(--text-dark); margin-bottom: 2rem;">${project.summary}</p>
-      
+      <button type="button" class="modal-close" aria-label="Close project details">&times;</button>
+      <img src="${imagePath}" alt="" class="modal-image" onerror="this.onerror=null; this.src='${fallbackImage.replace(/'/g, "\\'")}';">
+      <h2 id="projectModalTitle">${title}</h2>
+      <p class="modal-location" style="color: var(--text-gray); margin-bottom: 1rem;">${location}</p>
+      <p style="color: var(--text-dark); margin-bottom: 2rem;">${summary}</p>
       <div class="modal-details">
         <div class="modal-detail-item">
           <h4>Scope</h4>
           <ul>
-            ${project.details.scope.map(item => `<li>${item}</li>`).join('')}
+            ${scopeItems.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
           </ul>
         </div>
         <div class="modal-detail-item">
           <h4>Timeline</h4>
-          <p>${project.details.timeline}</p>
+          <p>${timeline}</p>
         </div>
         <div class="modal-detail-item">
           <h4>Highlights</h4>
           <ul>
-            ${project.details.highlights.map(item => `<li>${item}</li>`).join('')}
+            ${highlights.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
           </ul>
         </div>
       </div>
@@ -218,17 +270,19 @@
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Close button handler
+    modal.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('aria-modal', 'true');
+
     const closeBtn = modalContent.querySelector('.modal-close');
     if (closeBtn) {
       closeBtn.addEventListener('click', closeModal);
+      closeBtn.focus();
     }
 
-    // Track modal open
     if (typeof gtag !== 'undefined') {
       gtag('event', 'portfolio_view', {
-        'event_category': 'Portfolio',
-        'event_label': project.title
+        event_category: 'Portfolio',
+        event_label: project.title,
       });
     }
   }
@@ -239,48 +293,44 @@
 
     modal.classList.remove('active');
     document.body.style.overflow = '';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
   }
 
-  // Close modal on overlay click
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', (e) => {
     const modal = document.getElementById('projectModal');
-    if (modal && e.target === modal) {
-      closeModal();
-    }
+    if (modal && e.target === modal) closeModal();
   });
 
-  // Close modal on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
   });
 
-  // ============================================
-  // Initialize Portfolio
-  // ============================================
   async function init() {
     await loadProjects();
-    
-    // Render portfolio grid if on portfolio page
-    if (document.getElementById('portfolioGrid')) {
-      renderPortfolioGrid('All');
+
+    if (document.getElementById('portfolioFilters')) {
+      renderFilterButtons();
       initFilters();
     }
+
+    if (document.getElementById('portfolioGrid')) {
+      currentFilter = 'All';
+      renderPortfolioGrid('All');
+    }
+
+    renderFeaturedProjects('featuredProjects');
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 
-  // Export functions for global access if needed
   window.portfolioModule = {
     renderPortfolioGrid,
     openModal,
-    closeModal
+    closeModal,
   };
-
 })();
