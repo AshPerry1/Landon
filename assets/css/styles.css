@@ -915,17 +915,36 @@ body.has-valentines-banner .header {
 }
 
 .work-preview-cta-wrap {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 2.5rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
   margin-bottom: 0;
+  text-align: center;
 }
 
-.work-preview-cta-wrap .btn {
-  width: auto;
+.work-preview-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   max-width: 100%;
+  margin-inline: auto;
+  padding: 1.125rem 2.75rem;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  box-shadow: 0 4px 18px rgba(26, 51, 40, 0.14);
+  border: 1px solid rgba(192, 169, 104, 0.5);
+}
+
+.work-preview-cta-btn:hover {
+  box-shadow: 0 6px 22px rgba(26, 51, 40, 0.18);
 }
 
 @media (max-width: 1024px) {
@@ -2529,8 +2548,16 @@ main > .section.section.dark:last-of-type {
     width: 100%;
   }
 
-  .btn {
+  .hero-buttons .btn,
+  .contact-form .btn {
     width: 100%;
+  }
+
+  .work-preview-cta-btn {
+    width: fit-content;
+    min-width: 15rem;
+    padding: 1.0625rem 2rem;
+    white-space: normal;
   }
 
   .services-grid {
