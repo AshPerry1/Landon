@@ -45,7 +45,7 @@
   
   /* Spacing - More generous white space like Pike Properties */
   --section-padding-desktop: 120px;
-  --section-padding-mobile: 64px;
+  --section-padding-mobile: 48px;
   --touch-min: 44px;
   --container-max-width: 1200px;
   --side-padding-desktop: 32px;
@@ -251,10 +251,17 @@ h3 {
 }
 
 p {
-  max-width: 70ch;
+  max-width: min(70ch, 100%);
   color: var(--text-gray);
   font-size: 17px;
   line-height: 1.8;
+}
+
+/* Prevent flex/grid children from forcing horizontal overflow on narrow viewports */
+.hero-content > *,
+.two-column > *,
+[class*='-grid'] > * {
+  min-width: 0;
 }
 
 /* Container */
@@ -630,6 +637,22 @@ body.has-valentines-banner .header {
   box-shadow: var(--shadow-medium);
 }
 
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary {
+    white-space: normal;
+    line-height: 1.35;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    min-height: var(--touch-min);
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 /* Cards - Clean and minimal like Pike Properties */
 .card {
   background: var(--bg-white);
@@ -892,9 +915,17 @@ body.has-valentines-banner .header {
 }
 
 .work-preview-cta-wrap {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 2.5rem;
   margin-bottom: 0;
+}
+
+.work-preview-cta-wrap .btn {
+  width: auto;
+  max-width: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -2283,6 +2314,10 @@ main > .section.section.dark:last-of-type {
 }
 
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 4.25rem;
+  }
+
   body {
     -webkit-text-size-adjust: 100%;
   }
@@ -2321,7 +2356,22 @@ main > .section.section.dark:last-of-type {
   
   .hero {
     min-height: 60vh;
+    min-height: 60dvh;
     padding: var(--section-padding-mobile) 0;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(1.875rem, 7vw + 0.5rem, 2.75rem);
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 17px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-image:hover {
+    transform: none;
   }
 
   .hero.hero-page {
@@ -2398,6 +2448,10 @@ main > .section.section.dark:last-of-type {
   .nav-toggle {
     display: flex;
   }
+
+  .nav {
+    padding: 1rem 0;
+  }
   
   .nav-brand img {
     height: 38px;
@@ -2449,6 +2503,21 @@ main > .section.section.dark:last-of-type {
     padding: 10px 16px;
     min-height: var(--touch-min);
   }
+
+  .filter-btn:hover {
+    transform: none;
+  }
+
+  .portfolio-showcase-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .portfolio-filters-strip {
+    margin-bottom: 1.75rem;
+    gap: 0.5rem;
+  }
   
   .portfolio-grid.portfolio-grid-enhanced {
     grid-template-columns: 1fr;
@@ -2472,11 +2541,48 @@ main > .section.section.dark:last-of-type {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  .card {
+    padding: 1.75rem;
+  }
+
+  .contact-card a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .card:hover,
+  .service-card:hover,
+  .portfolio-card:hover,
+  .stat-card:hover,
+  .contact-card:hover,
+  .filter-btn:hover,
+  .work-preview-card:hover .work-preview-media img {
+    transform: none;
+  }
+
+  .work-preview-card:hover {
+    transform: none;
+  }
   
+  .modal.active {
+    align-items: flex-start;
+    padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+  }
+
   .modal-content {
     padding: 1.5rem;
-    margin: 1rem;
-    max-height: 85vh;
+    margin: 0;
+    max-height: none;
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .modal-details {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .modal-close {
@@ -2513,6 +2619,7 @@ main > .section.section.dark:last-of-type {
   
   .hero {
     min-height: 50vh;
+    min-height: 50dvh;
     padding: 3rem 0;
   }
 
@@ -2564,9 +2671,16 @@ main > .section.section.dark:last-of-type {
     padding: 1.5rem 1rem;
   }
   
-  .service-card,
-  .portfolio-card {
+  .service-card {
     padding: 1.5rem;
+  }
+
+  .portfolio-card {
+    padding: 0;
+  }
+
+  .portfolio-card-body {
+    padding: 1.15rem 1.25rem 1.35rem;
   }
   
   .footer {
@@ -2575,7 +2689,7 @@ main > .section.section.dark:last-of-type {
   
   .modal-content {
     padding: 1rem;
-    margin: 0.5rem;
+    margin: 0;
   }
 }
 
