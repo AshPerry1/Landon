@@ -2519,6 +2519,24 @@ main > .section.section.dark:last-of-type {
   .about-landon-row .about-photo {
     margin-bottom: 1.5rem;
   }
+
+  /* Left-align body copy on phones — centered paragraphs read broken / ragged */
+  .about-landon-row .about-text {
+    text-align: left;
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .about-landon-row .about-text p:not(.about-landon-cta) {
+    text-align: left;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+
+  .about-landon-cta {
+    text-align: center;
+  }
   
   .footer-content {
     grid-template-columns: 1fr;
