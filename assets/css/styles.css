@@ -69,8 +69,9 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
+  overflow-x: hidden;
   scroll-padding-top: 5.5rem;
+  width: 100%;
 }
 
 img,
@@ -102,6 +103,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   min-height: 100dvh;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 main {
@@ -255,6 +258,10 @@ p {
   color: var(--text-gray);
   font-size: 17px;
   line-height: 1.8;
+}
+
+h1, h2, h3, p, .section-title, .section-description, .btn {
+  overflow-wrap: anywhere;
 }
 
 /* Prevent flex/grid children from forcing horizontal overflow on narrow viewports */
@@ -938,7 +945,8 @@ body.has-valentines-banner .header {
   letter-spacing: 0.04em;
   line-height: 1.25;
   border-radius: var(--radius-pill);
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
   box-shadow: 0 4px 18px rgba(26, 51, 40, 0.14);
   border: 1px solid rgba(192, 169, 104, 0.5);
 }
@@ -2554,9 +2562,11 @@ main > .section.section.dark:last-of-type {
   }
 
   .work-preview-cta-btn {
-    width: fit-content;
-    min-width: 15rem;
-    padding: 1.0625rem 2rem;
+    width: auto;
+    min-width: 0;
+    padding: 1rem 1.5rem;
+    font-size: 16px;
+    letter-spacing: 0.02em;
     white-space: normal;
   }
 
