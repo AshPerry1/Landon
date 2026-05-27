@@ -72,6 +72,9 @@ html {
   overflow-x: hidden;
   scroll-padding-top: 5.5rem;
   width: 100%;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 img,
@@ -103,8 +106,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   min-height: 100dvh;
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 main {
@@ -118,6 +123,9 @@ main {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
   color: white;
   padding: 1rem 0;
@@ -260,7 +268,7 @@ p {
   line-height: 1.8;
 }
 
-h1, h2, h3, p, .section-title, .section-description, .btn {
+a {
   overflow-wrap: anywhere;
 }
 
@@ -273,11 +281,13 @@ h1, h2, h3, p, .section-title, .section-description, .btn {
 
 /* Container */
 .container {
+  width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--side-padding-desktop);
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 /* Header / Navigation - Clean and minimal like Pike Properties */
@@ -285,6 +295,9 @@ h1, h2, h3, p, .section-title, .section-description, .btn {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: var(--bg-white);
   border-bottom: 1px solid var(--line-gray);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -402,6 +415,7 @@ body.has-valentines-banner .header {
 .hero {
   padding: var(--section-padding-desktop) 0;
   min-height: 70vh;
+  min-height: 70svh;
   display: flex;
   align-items: center;
   position: relative;
@@ -795,7 +809,7 @@ body.has-valentines-banner .header {
 /* Services Cards */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 2.5rem;
 }
 
@@ -1363,7 +1377,7 @@ body.has-valentines-banner .header {
 
 .modal-details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -1406,7 +1420,7 @@ body.has-valentines-banner .header {
 /* Testimonials */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 2rem;
 }
 
@@ -2345,10 +2359,6 @@ main > .section.section.dark:last-of-type {
     scroll-padding-top: 4.25rem;
   }
 
-  body {
-    -webkit-text-size-adjust: 100%;
-  }
-
   h1 {
     font-size: 34px;
   }
@@ -2384,6 +2394,7 @@ main > .section.section.dark:last-of-type {
   .hero {
     min-height: 60vh;
     min-height: 60dvh;
+    min-height: 60svh;
     padding: var(--section-padding-mobile) 0;
   }
 
@@ -2657,6 +2668,7 @@ main > .section.section.dark:last-of-type {
   .hero {
     min-height: 50vh;
     min-height: 50dvh;
+    min-height: 50svh;
     padding: 3rem 0;
   }
 
@@ -2727,6 +2739,14 @@ main > .section.section.dark:last-of-type {
   .modal-content {
     padding: 1rem;
     margin: 0;
+  }
+}
+
+/* Very narrow phones: avoid gutters eating readable width */
+@media (max-width: 380px) {
+  :root {
+    --side-padding-mobile: 16px;
+    --section-padding-mobile: 40px;
   }
 }
 
