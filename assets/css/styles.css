@@ -2510,6 +2510,11 @@ main > .section.section.dark:last-of-type {
     gap: 2rem;
   }
 
+  /* Higher-specificity row layout must not win on small screens or text gets a ~0px column */
+  .two-column.about-landon-row {
+    grid-template-columns: 1fr;
+  }
+
   .about-photo img {
     max-width: 100%;
     margin-left: auto;
