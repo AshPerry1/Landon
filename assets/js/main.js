@@ -250,6 +250,103 @@
   }
 
   // ============================================
+  // Build Estimate Form
+  // ============================================
+  const ESTIMATE_RATE_PER_SQFT = 200;
+  const estimateForm = document.getElementById('estimateForm');
+  const squareFootageInput = document.getElementById('squareFootage');
+  const estimateResultEl = document.getElementById('estimateResult');
+
+  function formatEstimateCurrency(amount) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
+
+  function updateEstimatePreview() {
+    if (!estimateResultEl || !squareFootageInput) return;
+
+    const sqft = parseFloat(squareFootageInput.value);
+    if (Number.isFinite(sqft) && sqft > 0) {
+      estimateResultEl.textContent = formatEstimateCurrency(sqft * ESTIMATE_RATE_PER_SQFT);
+    } else {
+      estimateResultEl.textContent = '—';
+    }
+  }
+
+  if (squareFootageInput) {
+    squareFootageInput.addEventListener('input', updateEstimatePreview);
+    updateEstimatePreview();
+  }
+
+  if (estimateForm) {
+    estimateForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const name = (formData.get('name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const phone = (formData.get('phone') || '').toString().trim();
+      const squareFootage = parseFloat(formData.get('squareFootage'));
+      const notes = (formData.get('notes') || '').toString().trim();
+
+      if (!name || !email || !phone) {
+        alert('Please fill in all required fields (Name, Email, Phone).');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      if (!Number.isFinite(squareFootage) || squareFootage <= 0) {
+        alert('Please enter a valid square footage.');
+        return;
+      }
+
+      const estimateTotal = squareFootage * ESTIMATE_RATE_PER_SQFT;
+      const formattedTotal = formatEstimateCurrency(estimateTotal);
+      const formattedSqft = new Intl.NumberFormat('en-US').format(squareFootage);
+
+      const subject = encodeURIComponent(`Build Estimate Request — ${name}`);
+      const body = encodeURIComponent(
+        `Build Estimate Form Submission\n\n` +
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n\n` +
+        `Square Footage: ${formattedSqft} sq ft\n` +
+        `Rate Used: $${ESTIMATE_RATE_PER_SQFT}/sq ft\n` +
+        `Rough Estimate: ${formattedTotal}\n\n` +
+        (notes ? `Project Notes:\n${notes}\n\n` : '') +
+        `---\n` +
+        `This is a ballpark estimate from the website calculator. The visitor will send this message from their email app.`
+      );
+
+      const mailtoLink = `mailto:landongreen898@gmail.com?subject=${subject}&body=${body}`;
+
+      const submitMessage = this.querySelector('.form-submit-message');
+      if (submitMessage) {
+        submitMessage.classList.add('active');
+        submitMessage.textContent = 'Your email app will open — tap Send to deliver your estimate request to Landon.';
+      }
+
+      window.location.href = mailtoLink;
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submission', {
+          'event_category': 'Estimate',
+          'event_label': 'Build Estimate Form',
+          'value': Math.round(estimateTotal)
+        });
+      }
+    });
+  }
+
+  // ============================================
   // Intersection Observer for Reveal Animations
   // ============================================
   const observerOptions = {

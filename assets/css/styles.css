@@ -1687,6 +1687,66 @@ body.has-valentines-banner .header {
   animation: fadeIn 0.3s ease-out;
 }
 
+/* Build estimate */
+.estimate-section-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.estimate-intro {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 52ch;
+  color: var(--text-gray);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.estimate-card {
+  padding: 2rem;
+}
+
+.estimate-preview {
+  margin: 0.5rem 0 1.25rem;
+  padding: 1.5rem 1.25rem;
+  background: var(--bg-light);
+  border: 1px solid var(--line-gray);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+
+.estimate-preview-label {
+  margin: 0 0 0.35rem;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-gray);
+}
+
+.estimate-preview-value {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.75rem, 5vw, 2.35rem);
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.estimate-preview-rate {
+  margin: 0.5rem 0 0;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.estimate-disclaimer {
+  margin: 0 0 1.5rem;
+  max-width: none;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-gray);
+}
+
 /* Accordion (FAQ) */
 .accordion {
   max-width: 800px;
@@ -2591,7 +2651,8 @@ main > .section.section.dark:last-of-type {
   }
 
   .hero-buttons .btn,
-  .contact-form .btn {
+  .contact-form .btn,
+  .estimate-form .btn {
     width: 100%;
   }
 

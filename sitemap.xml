@@ -31,6 +31,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.greenwood-builds.com/estimate.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ashperry1.github.io/Landon/contact.html</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>

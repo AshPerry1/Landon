@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1A3328">
-  <meta name="description" content="View GW Properties & Development LLC portfolio of completed construction projects including new builds, renovations, and commercial work.">
-  <title>Portfolio | GW Properties & Development LLC</title>
+  <meta name="description" content="Get a rough custom home build estimate from GW Properties & Development LLC. Square footage × $200/sq ft ballpark calculator.">
+  <title>Build Estimate | GW Properties & Development LLC</title>
   
-  <link rel="canonical" href="https://ashperry1.github.io/Landon/portfolio.html">
+  <link rel="canonical" href="https://www.greenwood-builds.com/estimate.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ashperry1.github.io/Landon/portfolio.html">
-  <meta property="og:title" content="Portfolio | GW Properties & Development LLC">
-  <meta property="og:description" content="View our completed construction projects including new builds, renovations, and commercial work.">
-  <meta property="og:image" content="https://ashperry1.github.io/Landon/assets/img/portfolio-kitchen.png">
+  <meta property="og:url" content="https://www.greenwood-builds.com/estimate.html">
+  <meta property="og:title" content="Build Estimate | GW Properties & Development LLC">
+  <meta property="og:description" content="Rough custom home build estimate based on square footage. Request a detailed quote from Landon Green.">
+  <meta property="og:image" content="https://www.greenwood-builds.com/assets/img/portfolio-kitchen.png">
   <meta property="twitter:card" content="summary_large_image">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,15 +20,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="assets/css/styles.css">
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "GW Properties & Development LLC",
-    "telephone": "+1-205-834-5845"
-  }
-  </script>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8C0BWCXBF0"></script>
   <script>
@@ -39,7 +30,6 @@
   </script>
 </head>
 <body>
-  <!-- Valentine's Day Banner -->
   <div id="valentinesBanner" class="valentines-banner" style="display: none;">
     <div class="valentines-banner-content">
       <p>Happy Valentine's Day, Landon</p>
@@ -60,9 +50,9 @@
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
           <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
           <li><a href="faq.html" class="nav-link">FAQ</a></li>
-          <li><a href="estimate.html" class="nav-link">Estimate</a></li>
+          <li><a href="estimate.html" class="nav-link active">Estimate</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -78,43 +68,52 @@
     <section class="hero hero-page section dark">
       <div class="container">
         <div class="section-header">
-          <h1>Portfolio</h1>
-          <p class="section-description">Selected work—from new builds to renovations—organized for easy browsing.</p>
+          <h1>Build Estimate</h1>
+          <p class="section-description">A quick ballpark based on square footage — not a formal quote</p>
         </div>
       </div>
     </section>
 
-    <section class="section white portfolio-showcase-section">
+    <section class="section white">
       <div class="container">
-        <header class="portfolio-showcase-intro">
-          <h2 class="portfolio-showcase-heading">Project gallery</h2>
-          <p class="portfolio-showcase-lead">Tap a photo to view scope, timeline, and highlights.</p>
-        </header>
+        <div class="estimate-section-inner">
+          <p class="estimate-intro">Enter your project details below. We use <strong>$200 per square foot</strong> as a starting point for custom home builds. Your email app will open with a pre-filled message to send to Landon.</p>
 
-        <div class="portfolio-showcase-toolbar" aria-live="polite">
-          <p class="portfolio-showcase-count" id="portfolioCount">Loading projects…</p>
-        </div>
+          <div class="card estimate-card">
+            <form id="estimateForm" class="estimate-form">
+              <div class="form-group">
+                <label for="estimateName" class="form-label">Full Name *</label>
+                <input type="text" id="estimateName" name="name" class="form-input" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="estimateEmail" class="form-label">Email *</label>
+                <input type="email" id="estimateEmail" name="email" class="form-input" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="estimatePhone" class="form-label">Phone *</label>
+                <input type="tel" id="estimatePhone" name="phone" class="form-input" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="squareFootage" class="form-label">Estimated Square Footage *</label>
+                <input type="number" id="squareFootage" name="squareFootage" class="form-input" min="500" max="50000" step="1" placeholder="e.g. 2500" required inputmode="numeric">
+              </div>
+              <div class="form-group">
+                <label for="estimateNotes" class="form-label">Project Notes</label>
+                <textarea id="estimateNotes" name="notes" class="form-textarea" rows="4" placeholder="Location, timeline, finishes, or anything else you'd like to share…"></textarea>
+              </div>
 
-        <div id="portfolioFilters" class="portfolio-filters-strip" role="group" aria-label="Filter portfolio by category">
-          <!-- Filter buttons injected from data/projects.json -->
-        </div>
+              <div class="estimate-preview" aria-live="polite">
+                <p class="estimate-preview-label">Rough estimate</p>
+                <p class="estimate-preview-value" id="estimateResult">—</p>
+                <p class="estimate-preview-rate">Square footage × $200/sq ft</p>
+              </div>
 
-        <div class="portfolio-grid portfolio-grid-enhanced" id="portfolioGrid" role="list" aria-label="Portfolio projects">
-          <!-- Projects loaded via portfolio.js -->
-        </div>
+              <p class="estimate-disclaimer">This is a ballpark figure only. Final pricing depends on design, materials, site conditions, and scope. Landon will follow up with a detailed conversation.</p>
 
-        <p id="portfolioEmpty" class="portfolio-empty" hidden>No projects match this filter.</p>
-      </div>
-    </section>
-
-    <section class="section dark">
-      <div class="container">
-        <div class="cta-band">
-          <div class="section-header">
-            <h2 class="section-title">Results You Can See</h2>
-            <p class="section-description">Every project is a testament to our commitment to quality, craftsmanship, and client satisfaction. Ready to start your project?</p>
+              <button type="submit" class="btn btn-primary">Email My Estimate</button>
+              <div class="form-submit-message"></div>
+            </form>
           </div>
-          <a href="contact.html" class="btn btn-primary">Get Started</a>
         </div>
       </div>
     </section>
@@ -147,14 +146,6 @@
     </div>
   </footer>
 
-  <!-- Project Modal -->
-  <div id="projectModal" class="modal" role="dialog" aria-label="Project details" aria-hidden="true">
-    <div class="modal-content">
-      <!-- Content loaded via portfolio.js -->
-    </div>
-  </div>
-
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/portfolio.js"></script>
 </body>
 </html>
