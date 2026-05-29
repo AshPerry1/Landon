@@ -256,6 +256,9 @@
   const estimateForm = document.getElementById('estimateForm');
   const squareFootageInput = document.getElementById('squareFootage');
   const estimateResultEl = document.getElementById('estimateResult');
+  const estimatePhotosInput = document.getElementById('estimatePhotos');
+  const estimatePhotoPreview = document.getElementById('estimatePhotoPreview');
+  let estimatePhotoPreviewUrls = [];
 
   function formatEstimateCurrency(amount) {
     return new Intl.NumberFormat('en-US', {
@@ -279,6 +282,44 @@
   if (squareFootageInput) {
     squareFootageInput.addEventListener('input', updateEstimatePreview);
     updateEstimatePreview();
+  }
+
+  function clearEstimatePhotoPreview() {
+    estimatePhotoPreviewUrls.forEach(function(url) {
+      URL.revokeObjectURL(url);
+    });
+    estimatePhotoPreviewUrls = [];
+    if (estimatePhotoPreview) {
+      estimatePhotoPreview.innerHTML = '';
+      estimatePhotoPreview.hidden = true;
+    }
+  }
+
+  function renderEstimatePhotoPreview() {
+    if (!estimatePhotosInput || !estimatePhotoPreview) return;
+
+    clearEstimatePhotoPreview();
+
+    const files = Array.from(estimatePhotosInput.files || []);
+    if (!files.length) return;
+
+    files.forEach(function(file) {
+      const url = URL.createObjectURL(file);
+      estimatePhotoPreviewUrls.push(url);
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = file.name;
+      img.className = 'estimate-photo-thumb';
+      img.loading = 'lazy';
+      estimatePhotoPreview.appendChild(img);
+    });
+
+    estimatePhotoPreview.hidden = false;
+  }
+
+  if (estimatePhotosInput) {
+    estimatePhotosInput.addEventListener('change', renderEstimatePhotoPreview);
   }
 
   if (estimateForm) {
@@ -311,6 +352,8 @@
       const estimateTotal = squareFootage * ESTIMATE_RATE_PER_SQFT;
       const formattedTotal = formatEstimateCurrency(estimateTotal);
       const formattedSqft = new Intl.NumberFormat('en-US').format(squareFootage);
+      const photoFiles = estimatePhotosInput ? Array.from(estimatePhotosInput.files || []) : [];
+      const photoNames = photoFiles.map(function(file) { return file.name; });
 
       const subject = encodeURIComponent(`Build Estimate Request — ${name}`);
       const body = encodeURIComponent(
@@ -319,11 +362,13 @@
         `Email: ${email}\n` +
         `Phone: ${phone}\n\n` +
         `Square Footage: ${formattedSqft} sq ft\n` +
-        `Rate Used: $${ESTIMATE_RATE_PER_SQFT}/sq ft\n` +
         `Rough Estimate: ${formattedTotal}\n\n` +
         (notes ? `Project Notes:\n${notes}\n\n` : '') +
+        (photoNames.length
+          ? `Photos selected on the form (please attach these in your email before sending):\n${photoNames.map(function(n) { return '- ' + n; }).join('\n')}\n\n`
+          : '') +
         `---\n` +
-        `This is a ballpark estimate from the website calculator. The visitor will send this message from their email app.`
+        `Ballpark estimate from the website. The visitor will send this message from their email app.`
       );
 
       const mailtoLink = `mailto:landongreen898@gmail.com?subject=${subject}&body=${body}`;
@@ -331,7 +376,9 @@
       const submitMessage = this.querySelector('.form-submit-message');
       if (submitMessage) {
         submitMessage.classList.add('active');
-        submitMessage.textContent = 'Your email app will open — tap Send to deliver your estimate request to Landon.';
+        submitMessage.textContent = photoNames.length
+          ? 'Your email app will open — attach the photos you selected, then tap Send to deliver your request to Landon.'
+          : 'Your email app will open — tap Send to deliver your estimate request to Landon.';
       }
 
       window.location.href = mailtoLink;

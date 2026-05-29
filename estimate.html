@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1A3328">
-  <meta name="description" content="Get a rough custom home build estimate from GW Properties & Development LLC. Square footage × $200/sq ft ballpark calculator.">
+  <meta name="description" content="Get a rough custom home build estimate from GW Properties & Development LLC. Share square footage and project photos for a ballpark figure.">
   <title>Build Estimate | GW Properties & Development LLC</title>
   
   <link rel="canonical" href="https://www.greenwood-builds.com/estimate.html">
@@ -77,7 +77,7 @@
     <section class="section white">
       <div class="container">
         <div class="estimate-section-inner">
-          <p class="estimate-intro">Enter your project details below. We use <strong>$200 per square foot</strong> as a starting point for custom home builds. Your email app will open with a pre-filled message to send to Landon.</p>
+          <p class="estimate-intro">Enter your project details below for a rough ballpark figure. Your email app will open with a pre-filled message to send to Landon — attach any project photos there before you hit Send.</p>
 
           <div class="card estimate-card">
             <form id="estimateForm" class="estimate-form">
@@ -102,13 +102,19 @@
                 <textarea id="estimateNotes" name="notes" class="form-textarea" rows="4" placeholder="Location, timeline, finishes, or anything else you'd like to share…"></textarea>
               </div>
 
+              <div class="form-group">
+                <label for="estimatePhotos" class="form-label">Project Photos</label>
+                <input type="file" id="estimatePhotos" name="photos" class="form-input form-file-input" accept="image/*" multiple>
+                <p class="form-hint">Optional. Select photos of the lot, plans, or inspiration. They cannot be sent automatically — attach them in your email after it opens.</p>
+                <div id="estimatePhotoPreview" class="estimate-photo-preview" hidden></div>
+              </div>
+
               <div class="estimate-preview" aria-live="polite">
                 <p class="estimate-preview-label">Rough estimate</p>
                 <p class="estimate-preview-value" id="estimateResult">—</p>
-                <p class="estimate-preview-rate">Square footage × $200/sq ft</p>
               </div>
 
-              <p class="estimate-disclaimer">This is a ballpark figure only. Final pricing depends on design, materials, site conditions, and scope. Landon will follow up with a detailed conversation.</p>
+              <p class="estimate-disclaimer">This is a ballpark figure only — not a formal quote. Final pricing depends on design, materials, site conditions, and scope. Landon will review your details and follow up personally.</p>
 
               <button type="submit" class="btn btn-primary">Email My Estimate</button>
               <div class="form-submit-message"></div>

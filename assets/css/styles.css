@@ -1733,10 +1733,45 @@ body.has-valentines-banner .header {
   line-height: 1.2;
 }
 
-.estimate-preview-rate {
+.form-hint {
   margin: 0.5rem 0 0;
+  max-width: none;
   font-size: 14px;
+  line-height: 1.55;
   color: var(--text-gray);
+}
+
+.form-file-input {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.form-file-input::file-selector-button {
+  margin-right: 0.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.estimate-photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.estimate-photo-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line-gray);
 }
 
 .estimate-disclaimer {
