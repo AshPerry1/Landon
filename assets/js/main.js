@@ -238,14 +238,6 @@
       
       // Open mail client
       window.location.href = mailtoLink;
-      
-      // Track form submission with Google Analytics
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submission', {
-          'event_category': 'Contact',
-          'event_label': 'Quote Request Form'
-        });
-      }
     });
   }
 
@@ -382,14 +374,6 @@
       }
 
       window.location.href = mailtoLink;
-
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submission', {
-          'event_category': 'Estimate',
-          'event_label': 'Build Estimate Form',
-          'value': Math.round(estimateTotal)
-        });
-      }
     });
   }
 
@@ -422,42 +406,6 @@
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
-      });
-    });
-  }
-
-  // ============================================
-  // Google Analytics Event Tracking
-  // ============================================
-  if (typeof gtag !== 'undefined') {
-    // Track scroll depth
-    let maxScroll = 0;
-    const scrollThresholds = [25, 50, 75, 100];
-    
-    window.addEventListener('scroll', function() {
-      const scrollPercent = Math.round(
-        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-      );
-      
-      scrollThresholds.forEach(threshold => {
-        if (scrollPercent >= threshold && maxScroll < threshold) {
-          maxScroll = threshold;
-          gtag('event', 'scroll_depth', {
-            'event_category': 'Engagement',
-            'event_label': `${threshold}%`
-          });
-        }
-      });
-    });
-    
-    // Track button clicks
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const btnText = this.textContent.trim();
-        gtag('event', 'button_click', {
-          'event_category': 'Interaction',
-          'event_label': btnText
-        });
       });
     });
   }

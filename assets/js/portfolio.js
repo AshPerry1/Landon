@@ -213,13 +213,6 @@
       btn.classList.add('active');
 
       renderPortfolioGrid(filter);
-
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'portfolio_filter', {
-          event_category: 'Portfolio',
-          event_label: filter,
-        });
-      }
     });
   }
 
@@ -277,13 +270,6 @@
     if (closeBtn) {
       closeBtn.addEventListener('click', closeModal);
       closeBtn.focus();
-    }
-
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'portfolio_view', {
-        event_category: 'Portfolio',
-        event_label: project.title,
-      });
     }
   }
 
