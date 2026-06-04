@@ -9,7 +9,6 @@ A premium, modern-craftsman static website for GW Properties & Development LLC, 
 - **Fully responsive** - Optimized for all devices (320px to 1440px+)
 - **SEO optimized** - Complete meta tags, Open Graph, Twitter Cards, and JSON-LD structured data
 - **Accessible** - WCAG compliant with keyboard navigation and screen reader support
-- **Google Analytics** - Use a separate GA4 property for GW Properties (do not share the Lookout Mountain Mahjong measurement ID)
 - **Portfolio system** - Dynamic project gallery with filtering and modal lightbox
 - **Contact form** - Mailto-based form submission (no backend required)
 - **FAQ accordion** - Accessible accordion component
